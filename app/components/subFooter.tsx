@@ -1,6 +1,9 @@
 "use client"
 import { BsWhatsapp } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
+import { MdOutlineEmail } from "react-icons/md";
+
+
 
 
 const SubFooter = () => {
@@ -49,6 +52,10 @@ const SubFooter = () => {
                     </li>
                     <li className=" w-8 h-1/5 flex flex-row justify-start items-center">
                         <BsInstagram />
+                    </li>
+                    <li className=" w-8 h-1/5 flex flex-row justify-start items-center">
+                        <MdOutlineEmail size={20} />
+
                     </li>
                 </ul>
             </section>

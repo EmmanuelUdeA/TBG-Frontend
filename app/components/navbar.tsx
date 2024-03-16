@@ -5,6 +5,8 @@ import { BiSearchAlt } from "react-icons/bi";
 import { TfiShoppingCartFull } from "react-icons/tfi";
 import { FaUserAstronaut } from "react-icons/fa6";
 import LogoText from "./logoText";
+import Link from "next/link";
+
 
 
 const Navbar = ({ setViewMenu, viewMenu }) => {
@@ -20,12 +22,16 @@ const Navbar = ({ setViewMenu, viewMenu }) => {
             </section>
             <section className="flex flex-row justify-center items-center w-6/12 h-full">
                 {/*<Logo />*/}
-                <LogoText />
+                <Link href="/">
+                    <LogoText />
+                </Link>
             </section>
             <section className="flex flex-row justify-end items-center w-3/12 h-full pr-10">
                 <BiSearchAlt size={30} className="mr-5 cursor-pointer" />
                 <TfiShoppingCartFull size={30} className="mr-5 cursor-pointer" />
-                <FaUserAstronaut size={30} className="cursor-pointer" />
+                <Link href="/login">
+                    <FaUserAstronaut size={30} className="cursor-pointer" />
+                </Link>
             </section>
         </nav>
     )
