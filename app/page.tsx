@@ -1,10 +1,10 @@
 "use client";
 import Navbar from "./components/navbar";
-import Landing from "./components/landing";
 import Footer from "./components/footer";
 import SubFooter from "./components/subFooter";
 import Menu from "./components/menu";
 import { useState } from "react";
+import Landing from "./components/landing";
 
 export default function Home() {
   const [viewMenu, setViewMenu] = useState(false);
