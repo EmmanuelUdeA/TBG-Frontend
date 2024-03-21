@@ -27,7 +27,7 @@ const Page = () => {
         <div className="flex flex-col justify-start items-center w-screen h-auto">
             <Navbar setViewMenu={setViewMenu} viewMenu={viewMenu} />
             {viewMenu && <Menu setViewMenu={setViewMenu} viewMenu={viewMenu} />}
-            <Slider nameImg={imgNames[actualCollection]} handleBack={handleBack} handleForward={handleForward} actualItem={actualCollection} itemsLength={imgNames.length - 1}
+            <Slider nameImg={imgNames[actualCollection]} handleBack={handleBack} handleForward={handleForward} actualItem={actualCollection} itemsLength={imgNames.length - 1} actualComponent="collections"
             />
             <SubFooter />
             <Footer />
