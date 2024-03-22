@@ -8,7 +8,6 @@ import LogoText from "./logoText";
 import Link from "next/link";
 
 
-
 const Navbar = ({ setViewMenu, viewMenu }) => {
     const handleView = () => {
         setViewMenu(!viewMenu)

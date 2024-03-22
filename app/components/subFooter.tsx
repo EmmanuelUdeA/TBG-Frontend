@@ -8,7 +8,7 @@ import { MdOutlineEmail } from "react-icons/md";
 
 const SubFooter = () => {
     return (
-        <div className="h-64 w-screen flex flex-row justify-center items-center bg-black px-5">
+        <div className="h-64 w-screen flex flex-row justify-center items-center bg-black px-20">
             <section className="flex flex-col justify-start items-center h-full w-1/4 py-20 px-5 text-white">
                 <h1 className="text-lg mb-5 w-full h-1/5 flex flex-row justify-start items-center">
                     Contact
