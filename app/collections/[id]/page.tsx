@@ -34,11 +34,13 @@ const Page = () => {
             <ul className="flex flex-row flex-wrap w-full h-auto justify-center items-start my-10 ">
                 {insideProducts.map((product, index) => {
                     return (
-                        <li style={{ "--image-url": `url(${product.imgPathBackground})` }}
-                            className="flex flex-col w-1/5 h-96 justify-center items-center m-10 bg-cover bg-no-repeat drop-shadow-xl bg-[image:var(--image-url)] cursor-pointer" key={index}>
+                        <li style={{ backgroundImage: `url(${product.imgPathBackground})` }}
+                            className="flex flex-col w-1/5 h-96 justify-center items-center m-10 bg-cover bg-no-repeat bg-top drop-shadow-xl cursor-pointer" key={index}>
                             <img src={product.imgPath} alt={product.name} className="w-full h-96 hover:opacity-0 hover:transition-all duration-200" />
-                            <h1 className="flex flex-row justify-center items-center w-full py-1 bg-black text-white text-sm font-bold">{product.name}</h1>
-                            <h3 className="flex flex-row justify-center items-center w-full py-1 bg-black text-white text-sm">{product.price}</h3>
+                            <section className="flex flex-col absolute w-full h-auto mt-96 justify-center items-end">
+                                <h1 className="flex flex-row justify-center items-center w-full py-1 bg-black text-white text-sm font-bold">{product.name}</h1>
+                                <h3 className="flex flex-row justify-center items-center w-full py-1 bg-black text-white text-sm">{product.price}</h3>
+                            </section>
                         </li>
                     )
                 })}
