@@ -38,7 +38,7 @@ export default function Reserva() {
                         <th className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Destinos</th>
                         <th className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">...</th>
                         <th className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Fecha</th>
-                        <th className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Estado</th>
+                        <th className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Status</th>
                         <th className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Equipaje</th>
                         <th className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Asientos</th>
                         <th className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Pago</th>
@@ -53,53 +53,7 @@ export default function Reserva() {
                         <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">02/01/2024</td>
                         <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Por pagar </td>
                         <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><MdLuggage /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><MdOutlineAirlineSeatReclineExtra /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><BsCashCoin /></td>
                         <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><TbEdit /></td>
-                    </tr>
-                    <tr className="flex flex-row justify-center items-center w-full h-8 hover:bg-sky-300" >
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">2 </td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Alemania</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">...</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">24/02/2024</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Registrado </td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><MdLuggage /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><MdOutlineAirlineSeatReclineExtra /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><BsCashCoin /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><TbEdit /></td>
-                    </tr>
-                    <tr className="flex flex-row justify-center items-center w-full h-8 hover:bg-sky-300" >
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">3</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Brazil</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">...</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">11/04/2024</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Por pagar </td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><MdLuggage /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><MdOutlineAirlineSeatReclineExtra /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><BsCashCoin /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><TbEdit /></td>
-                    </tr>
-                    <tr className="flex flex-row justify-center items-center w-full h-8 hover:bg-sky-300" >
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">4</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Canada</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">...</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">21/02/2024</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs">Por Asientos </td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><MdLuggage /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><MdOutlineAirlineSeatReclineExtra /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><BsCashCoin /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs"><TbEdit /></td>
-                    </tr>
-                    <tr className="flex flex-row justify-center items-center w-full h-8 hover:bg-sky-300" >
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs ">6</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs ">España</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs ">...</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs ">30/02/2024</td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs ">Por pagar </td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs "><MdLuggage /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs "><MdOutlineAirlineSeatReclineExtra /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs "><BsCashCoin /></td>
-                        <td className="flex flex-row justify-center items-center w-1/12 h-full border-b border-zinc-500 mr-2 text-xs "><TbEdit /></td>
                     </tr>
                 </tbody>
             </table>
