@@ -26,7 +26,7 @@ const SliderCollections = ({ }) => {
     return (
         <div className="flex flex-row w-screen h-screen bg-cover bg-no-repeat overflow-hidden justify-center items-center">
             <div className="flex w-full h-full justify-center items-center cursor-pointer transition duration-300 ease-in-out transform">
-                <Image onClick={handleCollections} className="hover:opacity-80 " alt="collection" src={imgNames[actualCollection]} fill={true} />
+                <Image onClick={handleCollections} className="w-screen h-full" alt="collection" src={imgNames[actualCollection]} fill={true} />
             </div>
         </div>
     )
