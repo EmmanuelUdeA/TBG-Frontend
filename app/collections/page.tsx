@@ -6,9 +6,6 @@ import Menu from "../components/menu";
 import { useState } from "react";
 import Slider from "../components/slider";
 
-
-
-
 const Page = () => {
     const imgNames = ["/CollectionInside1.webp", "/CollectionFotosintesis1.webp", "/CollectionSocMad.webp"];
     const [viewMenu, setViewMenu] = useState(false);

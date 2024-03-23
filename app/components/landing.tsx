@@ -3,7 +3,7 @@ import Landing2 from "./landing2";
 
 const Landing = () => {
     return (
-        <div>
+        <div className="flex flex-col justify-center items-center w-screen h-auto">
             <Landing1 />
             <Landing2 />
         </div>
