@@ -29,10 +29,16 @@ const SubFooter = () => {
                 <h1 className="text-lg mb-5 w-full h-1/5 flex flex-row justify-start items-center font-semibold">
                     About Us
                 </h1>
-                <ul className="text-sm flex flex-col justify-start items-start w-full h-4/5">
-                    <li className="w-full h-1/2 flex flex-row justify-start items-center">Culture</li>
-                    <li className="w-full h-1/2 flex flex-row justify-start items-center">Vision</li>
-                    <li className="w-full h-1/2 flex flex-row justify-start items-center">Team</li>
+                <ul className="text-sm flex flex-col justify-start items-start w-full h-4/5 ">
+                    <li className="w-full h-1/2 flex flex-row justify-start items-center hover:text-blue-500">
+                        <Link href="/aboutUs">Culture</Link>
+                    </li>
+                    <li className="w-full h-1/2 flex flex-row justify-start items-center hover:text-blue-500">
+                        <Link href="/aboutUs">Vision</Link>
+                    </li>
+                    <li className="w-full h-1/2 flex flex-row justify-start items-center hover:text-blue-500">
+                        <Link href="/aboutUs">Team</Link>
+                    </li>
                 </ul>
             </section>
             <section className="flex flex-col justify-start items-center h-full w-1/4 py-20 px-5 text-white">
@@ -40,9 +46,15 @@ const SubFooter = () => {
                     Help
                 </h1>
                 <ul className="text-sm flex flex-col justify-start items-start w-full h-4/5 ">
-                    <li className="w-full h-1/2 flex flex-row justify-start items-center">Frequent Questions</li>
-                    <li className="w-full h-1/2 flex flex-row justify-start items-center">Refunds and Warranties</li>
-                    <li className="w-full h-1/2 flex flex-row justify-start items-center">Shipping</li>
+                    <li className="w-full h-1/2 flex flex-row justify-start items-center hover:text-blue-500">
+                        <Link href="/help">Frequent Questions</Link>
+                    </li>
+                    <li className="w-full h-1/2 flex flex-row justify-start items-center hover:text-blue-500">
+                        <Link href="/help">Refunds and Warranties</Link>
+                    </li>
+                    <li className="w-full h-1/2 flex flex-row justify-start items-center hover:text-blue-500">
+                        <Link href="/help">Shipping</Link>
+                    </li>
                 </ul>
             </section>
             <section className="flex flex-col justify-start items-center h-full w-1/4 py-20 px-5 text-white">
