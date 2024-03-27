@@ -54,8 +54,8 @@ const Gallery = () => {
                     }
                 })}
                 <li className="flex flex-col h-full w-screen justify-center items-end absolute pr-12">
-                    <BsFillArrowLeftSquareFill size={50} onClick={handleBackward} className="mb-1 cursor-pointer hover:scale-105 hover:bg-white hover:rounded-2xl" />
-                    <BsFillArrowRightSquareFill size={50} onClick={handleForward} className="cursor-pointer hover:scale-105 hover:bg-white hover:rounded-2xl" />
+                    <BsFillArrowLeftSquareFill size={50} onClick={handleBackward} className="mb-1 cursor-pointer hover:scale-105 hover:bg-white hover:rounded-lg" />
+                    <BsFillArrowRightSquareFill size={50} onClick={handleForward} className="cursor-pointer hover:scale-105 hover:bg-white hover:rounded-lg" />
                 </li>
             </ul>
         </div>
