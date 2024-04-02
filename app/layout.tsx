@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { GeistSans } from 'geist/font/sans';
-
+import { Botpress } from "./components/botpress";
 
 export const metadata: Metadata = {
   title: "TBGSHOP",
@@ -15,6 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Botpress/>
+      </head>
       <body className={GeistSans.className}>{children}</body>
     </html>
   );
