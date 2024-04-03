@@ -1,13 +1,7 @@
-'use client'
-import Navbar from "@/app/components/navbar";
-import { useState } from "react";
-import SubFooter from "@/app/components/subFooter";
-import Footer from "@/app/components/footer";
+'use client';
 import SliderCollections from "@/app/components/sliderCollections";
 import CollectionDescription from "@/app/components/collectionDescription";
-import Image from "next/image";
 import Gallery from "@/app/components/gallery";
-import Menu from "../../components/menu";
 import { usePathname } from "next/navigation";
 
 const Page = () => {
@@ -27,17 +21,28 @@ const Page = () => {
                 imgPath: "/CollectionInside/InsideHoodieArenaColor.webp",
                 imgPathBackground: "/CollectionInside/InsideHoodieArenaColorBackground.webp",
             }
+        ],
+        lumen: [
+            {
+                name: "White Tshirt",
+                price: "70.000$",
+                imgPath: "/CollectionLumen/LumenTshirtWhiteColor.webp",
+                imgPathBackground: "/CollectionLumen/LumenTshirtWhiteColorBackground.webp",
+            },
+            {
+                name: "Black Tshirt",
+                price: "70.000$",
+                imgPath: "/CollectionLumen/LumenTshirtBlackColor.webp",
+                imgPathBackground: "/CollectionLumen/LumenTshirtBlackColorBackground.webp",
+            }
         ]
     }
-    const [viewMenu, setViewMenu] = useState(false);
     return (
         <div className="flex flex-col w-screen h-auto justify-start items-center">
-            <Navbar setViewMenu={setViewMenu} viewMenu={viewMenu} />
-            {viewMenu && <Menu setViewMenu={setViewMenu} viewMenu={viewMenu} />}
             <SliderCollections collName={collName} />
             <CollectionDescription collName={collName} />
             <ul className="flex flex-row flex-wrap w-full h-auto justify-center items-start my-10 ">
-                {products["inside"].map((product, index) => {
+                {products[collName].map((product, index) => {
                     return (
                         <li style={{ backgroundImage: `url(${product.imgPathBackground})` }}
                             className="flex flex-col w-1/5 h-96 justify-center items-center m-10 bg-cover bg-no-repeat bg-top drop-shadow-xl cursor-pointer" key={index}>
@@ -51,8 +56,6 @@ const Page = () => {
                 })}
             </ul>
             <Gallery collName={collName} />
-            <SubFooter />
-            <Footer />
         </div>
     )
 }

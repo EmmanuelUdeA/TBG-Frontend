@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { GeistSans } from 'geist/font/sans';
 import { Botpress } from "./components/botpress";
+import NavbarLayout from "./components/navbarLayout";
 
 export const metadata: Metadata = {
   title: "TBGSHOP",
@@ -16,9 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Botpress/>
+        <Botpress />
       </head>
-      <body className={GeistSans.className}>{children}</body>
+      <body className={GeistSans.className}>
+        <NavbarLayout>
+          {children}
+        </NavbarLayout>
+      </body>
     </html>
   );
 }

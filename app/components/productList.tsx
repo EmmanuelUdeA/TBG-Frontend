@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const ProductList = ({ products }) => {
     return (
-        <div className="flex flex-col w-screen h-auto justify-center items-center">
+        <div className="w-screen flex flex-col h-auto justify-center items-center">
             <ul className="flex flex-row w-11/12 h-auto justify-center items-start my-10 flex-wrap">
                 {products.map((p: any, i: any) => {
                     return (

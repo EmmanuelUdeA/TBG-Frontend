@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const Login = () => {
     return (
-        <div className="bg-[url('/LoginBackground.webp')] w-full h-screen bg-no-repeat bg-center bg-cover justify-center items-center flex flex-col">
+        <div className="bg-[url('/LoginBackground.webp')] justify-center items-center w-screen h-autow-full h-screen bg-no-repeat bg-center bg-cover flex flex-col">
             <section className="w-1/2 h-5/6 flex flex-col justify-center items-center bg-white rounded-md ">
                 <h1 className="w-full h-1/6 flex flex-row justify-center items-end text-4xl">
                     Login
