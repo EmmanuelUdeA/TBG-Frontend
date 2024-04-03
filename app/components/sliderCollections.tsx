@@ -3,8 +3,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 
-const SliderCollections = ({ }) => {
-    const imgNames = ["/CollectionInside/InsideSlider1.webp", "/CollectionInside/InsideSlider2.webp", "/CollectionInside/InsideSlider3.webp", "/CollectionInside/InsideSlider4.webp", "/CollectionInside/InsideSlider5.webp"];
+const SliderCollections = ({ collName }) => {
+    const imgNames = {
+        inside: ["/CollectionInside/InsideSlider1.webp", "/CollectionInside/InsideSlider2.webp", "/CollectionInside/InsideSlider3.webp", "/CollectionInside/InsideSlider4.webp", "/CollectionInside/InsideSlider5.webp"],
+        lumen: ["/CollectionLumen/LumenSlider1.webp", "/CollectionLumen/LumenSlider2.webp", "/CollectionLumen/LumenSlider3.webp", "/CollectionLumen/LumenSlider4.webp", "/CollectionLumen/LumenSlider5.webp"],
+    };
     const [actualCollection, setActualCollection] = useState(0);
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -17,7 +20,7 @@ const SliderCollections = ({ }) => {
     }, [actualCollection]); // Asegúrate de pasar un arreglo vacío como segundo argumento para que el efecto se ejecute solo una vez
 
     const handleCollections = () => {
-        if (actualCollection === imgNames.length - 1) {
+        if (actualCollection === imgNames[collName].length - 1) {
             setActualCollection(0)
         } else {
             setActualCollection(actualCollection + 1)
@@ -26,7 +29,7 @@ const SliderCollections = ({ }) => {
     return (
         <div className="flex flex-row w-screen h-screen bg-cover bg-no-repeat overflow-hidden justify-center items-center">
             <div className="flex w-full h-full justify-center items-center cursor-pointer transition duration-300 ease-in-out transform">
-                <Image onClick={handleCollections} className="w-screen h-full" alt="collection" src={imgNames[actualCollection]} fill={true} />
+                <Image onClick={handleCollections} className="w-screen h-full" alt="collection" src={imgNames[collName][actualCollection]} fill={true} />
             </div>
         </div>
     )

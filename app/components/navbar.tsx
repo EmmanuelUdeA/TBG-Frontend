@@ -32,7 +32,7 @@ const Navbar = ({ setViewMenu, viewMenu }) => {
     }, [prevScrollPos]);
 
     return (
-        <nav className={`flex flex-row justify-center items-center w-screen h-20 fixed top-0 z-10 ${viewMenu ? 'bg-purple-500 opacity-20' : 'bg-white'} ${visible ? 'visible' : 'invisible'}`}>
+        <nav className={`flex flex-row justify-center items-center w-screen h-20 top-0 z-10`}>
             <section className="flex flex-row justify-start items-center w-3/12 h-full pl-5">
                 <TbMenu2
                     size={30} className="cursor-pointer" onClick={handleView} />
