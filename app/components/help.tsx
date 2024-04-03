@@ -1,6 +1,6 @@
 const Help = () => {
     return (
-        <div className="flex flex-col justify-center items-center w-full h-screen text-center p-5 mt-28">
+        <div className="justify-start w-screen flex-col items-center h-screen text-center p-5 mt-28">
             <h2 className="text-2xl font-bold mb-5 bg-black text-yellow-50 w-full p-5">Help</h2>
             <div className="flex flex-col justify-center items-center w-full">
                 <h3 className="font-semibold text-4xl mb-4 h-10 w-full">Frequent Question</h3>

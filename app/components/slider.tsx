@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Slider = ({ nameImg, handleBack, handleForward, actualItem, itemsLength, actualComponent, imgContClass, imgWidth, imgHeight }) => {
     return (
-        <div className="flex flex-row w-screen h-screen bg-cover bg-no-repeat overflow-hidden justify-center items-center">
+        <div className="w-screen flex flex-row h-screen bg-cover bg-no-repeat overflow-hidden justify-center items-center">
             <IoIosArrowBack onClick={handleBack} className={actualItem === 0 ? "opacity-40" : "cursor-pointer"} size={30} />
             <Link href={
                 "/" + actualComponent + "/" + actualItem
