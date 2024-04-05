@@ -1,7 +1,7 @@
 import { BsFillArrowRightSquareFill, BsFillArrowLeftSquareFill } from "react-icons/bs";
-
 import React from 'react'
 import { useState } from 'react'
+import useScreenSize from "@/hooks/useScreenSize";
 
 
 const Gallery = ({ collName }) => {
@@ -25,9 +25,10 @@ const Gallery = ({ collName }) => {
             setInitialImg(initialImg - 1)
         }
     }
+
     return (
         <div className="flex flex-col w-screen h-auto justify-center items-center my-20 px-10">
-            <h1 className="flex flex-row justify-center items-center font-bold text-6xl mb-20 h-10 w-full"> GALLERY. </h1>
+            <h1 className="flex flex-row justify-center items-center font-bold text-5xl mb-20 h-10 w-full"> GALLERY. </h1>
             <ul className="flex flex-row w-full h-auto justify-center items-center">
                 {imgPath[collName].map((img, index) => {
                     if (initialImg < imgPath[collName].length - 3) {
