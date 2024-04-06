@@ -1,7 +1,6 @@
 import { BsFillArrowRightSquareFill, BsFillArrowLeftSquareFill } from "react-icons/bs";
 import React from 'react'
-import { useState } from 'react'
-import useScreenSize from "@/hooks/useScreenSize";
+import { useState } from 'react';
 
 
 const Gallery = ({ collName }) => {
