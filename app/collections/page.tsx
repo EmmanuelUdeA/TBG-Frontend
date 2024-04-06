@@ -16,6 +16,7 @@ const Page = () => {
             setActualCollection(actualCollection + 1)
         }
     }
+
     return (
         <Slider imgContClass="bg-blue-500" nameImg={imgNames[actualCollection]} handleBack={handleBack} handleForward={handleForward} actualItem={collectionsNames[actualCollection]} itemsLength={imgNames.length - 1} actualComponent="collections" imgWidth={680} imgHeight={600} />
     )
