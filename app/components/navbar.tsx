@@ -1,23 +1,22 @@
-"use client"
-import React, { useState, useEffect } from "react";
+"use client";
 import { TbMenu2 } from "react-icons/tb";
 import { BiSearchAlt } from "react-icons/bi";
 import { TfiShoppingCartFull } from "react-icons/tfi";
 import { RiContactsLine } from "react-icons/ri";
 import LogoText from "./logoText";
 import Link from "next/link";
+import { signIn, useSession, signOut } from "next-auth/react";
 
-const Navbar = ({ setViewMenu, viewMenu }) => {
-
-
-    const [prevScrollPos, setPrevScrollPos] = useState(0);
-
-    const [visible, setVisible] = useState(true);
-
+const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
+    /*const [prevScrollPos, setPrevScrollPos] = useState(0);
+    const [visible, setVisible] = useState(true);*/
     const handleView = () => {
-        setViewMenu(!viewMenu)
+        setViewMenu(!viewMenu);
     }
-    useEffect(() => {
+    const handleCart = () => {
+        setViewCart(!viewCart);
+    }
+    /*useEffect(() => {
         const handleScroll = () => {
             const currentScrollPos = window.pageYOffset;
             const visible = prevScrollPos > currentScrollPos;
@@ -30,8 +29,9 @@ const Navbar = ({ setViewMenu, viewMenu }) => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [prevScrollPos]);
+    }, [prevScrollPos]);*/
 
+    const { data: session } = useSession();
     return (
         <nav className={`flex flex-row justify-between items-center w-screen h-20 top-0 z-10 px-5 md:scroll-px-5`}>
             <section className="flex flex-row justify-start items-center w-full md:w-3/12">
@@ -46,10 +46,12 @@ const Navbar = ({ setViewMenu, viewMenu }) => {
             </section>
             <section className="flex flex-row justify-end items-center w-full md:w-3/12">
                 <BiSearchAlt className="flex flex-row h-5 w-5 md:h-8 md:w-8 mr-5 cursor-pointer " />
-                <TfiShoppingCartFull className=" flex flex-row h-5 w-5 md:h-8 md:w-8 mr-5 cursor-pointer " />
-                <Link className="flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center item" href="/login">
-                    <RiContactsLine className="cursor-pointer h-full w-full" />
-                </Link>
+                <TfiShoppingCartFull className=" flex flex-row h-5 w-5 md:h-8 md:w-8 mr-5 cursor-pointer " onClick={handleCart} />
+                {session?.user ?
+                    <img src={session.user.image} className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center rounded-full" onClick={() => signOut({ callbackUrl: "/" })} />
+                    :
+                    <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={() => signIn()} />
+                }
             </section>
         </nav>
     )
