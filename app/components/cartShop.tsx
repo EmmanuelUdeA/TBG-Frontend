@@ -7,7 +7,7 @@ const CartShop = ({ viewCart, setViewCart }) => {
     const handleViewMenu = () => {
         setViewCart(!viewCart)
     }
-    const products = useStore(state => state.products)
+    const products = useStore(state => state.collections[0].products)
 
     return (
         <div className="w-screen h-full flex flex-col justify-center items-end fixed z-50 bg-opacity-80 bg-black text-white text-2xl">
@@ -17,7 +17,7 @@ const CartShop = ({ viewCart, setViewCart }) => {
                 </section>
                 <h1 className="font-bold text-black"> Cart Shop </h1>
                 <ul className="w-full h-auto flex flex-col justify-center items-start p-6">
-                    {products.lumen.map((product, index) => (
+                    {products.map((product, index) => (
                         <li className="w-full h-20 flex flex-row justify-start items-center">
                             <img className="w-20 h-20 " src={product.imgPath} alt={product.name} />
                             <section className="w-auto h-8 flex flex-col justify-center items-start">
