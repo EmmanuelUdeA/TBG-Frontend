@@ -8,28 +8,13 @@ import Link from "next/link";
 import { signIn, useSession, signOut } from "next-auth/react";
 
 const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
-    /*const [prevScrollPos, setPrevScrollPos] = useState(0);
-    const [visible, setVisible] = useState(true);*/
+
     const handleView = () => {
         setViewMenu(!viewMenu);
     }
     const handleCart = () => {
         setViewCart(!viewCart);
     }
-    /*useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollPos = window.pageYOffset;
-            const visible = prevScrollPos > currentScrollPos;
-            setPrevScrollPos(currentScrollPos);
-            setVisible(visible);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [prevScrollPos]);*/
 
     const { data: session } = useSession();
     return (

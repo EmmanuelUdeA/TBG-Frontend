@@ -69,7 +69,7 @@ const SubFooter = () => {
                         </Link>
                     </li>
                     <li className=" w-8 h-1/5 flex flex-row justify-center md:justify-start items-center">
-                        <Link href="http://www.gmail.com" target="_blank" rel="noopener noreferrer" >
+                        <Link href="https://www.gmail.com" target="_blank" rel="noopener noreferrer" >
                             <MdOutlineEmail size={20} className="hover:text-red-500 cursor-pointer" />
                         </Link>
                     </li>
