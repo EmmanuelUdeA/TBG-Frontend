@@ -1,0 +1,175 @@
+[
+  {
+    "id": 1,
+    "name": "lumen",
+    "description": "x",
+    "collectionImgMain": "/CollectionLumen.webp",
+    "sliderMain": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionLumen/LumenSlider1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionLumen/LumenSlider2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionLumen/LumenSlider3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionLumen/LumenSlider4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionLumen/LumenSlider5.webp"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "White Tshirt",
+        "price": 70.0,
+        "imgPath": "/CollectionLumen/LumenTshirtWhiteColor.webp",
+        "imgPathBackground": "/CollectionLumen/LumenTshirtWhiteColorBackground.webp"
+      },
+      {
+        "id": 2,
+        "name": "Black Tshirt",
+        "price": 70.0,
+        "imgPath": "/CollectionLumen/LumenTshirtBlackColor.webp",
+        "imgPathBackground": "/CollectionLumen/LumenTshirtBlackColorBackground.webp"
+      },
+      {
+        "id": 3,
+        "name": "Cream Hoodie",
+        "price": 140.0,
+        "imgPath": "/CollectionLumen/LumenHoodieCreamColor.webp",
+        "imgPathBackground": "/CollectionLumen/LumenHoodieCreamColorBackground.webp"
+      }
+    ],
+    "gallery": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionLumen/LumenCollectionGallery1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionLumen/LumenCollectionGallery2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionLumen/LumenCollectionGallery3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionLumen/LumenCollectionGallery4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionLumen/LumenCollectionGallery5.webp"
+      },
+      {
+        "id": 6,
+        "imgPath": "/CollectionLumen/LumenCollectionGallery6.webp"
+      },
+      {
+        "id": 7,
+        "imgPath": "/CollectionLumen/LumenCollectionGallery7.webp"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "inside",
+    "description": "x",
+    "collectionImgMain": "/CollectionInside1.webp",
+    "sliderMain": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionInside/InsideSlider1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionInside/InsideSlider2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionInside/InsideSlider3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionInside/InsideSlider4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionInside/InsideSlider5.webp"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "Black Hoodie",
+        "price": 140.0,
+        "imgPath": "/CollectionInside/InsideHoodieBlackColor.webp",
+        "imgPathBackground": "/CollectionInside/InsideHoodieBlackColorBackground.webp"
+      },
+      {
+        "id": 2,
+        "name": "Arena Hoodie",
+        "price": 140.0,
+        "imgPath": "/CollectionInside/InsideHoodieArenaColor.webp",
+        "imgPathBackground": "/CollectionInside/InsideHoodieArenaColorBackground.webp"
+      }
+    ],
+    "gallery": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionInside/InsideCollectionGallery1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionInside/InsideCollectionGallery2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionInside/InsideCollectionGallery3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionInside/InsideCollectionGallery4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionInside/InsideCollectionGallery5.webp"
+      },
+      {
+        "id": 6,
+        "imgPath": "/CollectionInside/InsideCollectionGallery6.webp"
+      },
+      {
+        "id": 7,
+        "imgPath": "/CollectionInside/InsideCollectionGallery7.webp"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "society-madness",
+    "description": "x",
+    "collectionImgMain": "/CollectionSocMad.webp",
+    "sliderMain": [],
+    "products": [],
+    "gallery": []
+  },
+  {
+    "id": 4,
+    "name": "fotosintesis",
+    "description": "x",
+    "collectionImgMain": "/CollectionFotosintesis1.webp",
+    "sliderMain": [],
+    "products": [],
+    "gallery": []
+  }
+]

@@ -1,61 +1,45 @@
 import { create } from "zustand";
+import Collections from "../collections.json";
 
-type Product = {
+console.log(Collections)
+
+interface Product {
+    id?: number;
     name: string;
-    price: string;
-    imgPath: string;
-    imgPathBackground: string;
+    price: number;
+    imgPath?: string;
+    imgPathBackground?: string;
 }
 
-type Products = {
-    inside: Product[];
-    lumen: Product[];
+interface Gallery {
+    id: number;
+    imgPath: string;
+}
+
+interface Slider {
+    id: number;
+    imgPath: string;
+}
+
+interface Collection {
+    id: number;
+    name: string;
+    description: string;
+    collectionImgMain: string;
+    sliderMain: Slider[];
+    products: Product[];
+    gallery: Gallery[];
 }
 
 type State = {
-    products: Products;
-}
+    collections: Collection[];
+};
 
-/*type Actions = {
-    getProducts: (products: Products) => void;
-}*/
+type Actions = {
+};
 
-export const useStore = create<State /* Actions*/>((set) => ({
-    products: {
-        inside: [
-            {
-                name: "Black Hoodie",
-                price: "140.000$",
-                imgPath: "/CollectionInside/InsideHoodieBlackColor.webp",
-                imgPathBackground: "/CollectionInside/InsideHoodieBlackColorBackground.webp",
-            },
-            {
-                name: "Arena Hoodie",
-                price: "140.000$",
-                imgPath: "/CollectionInside/InsideHoodieArenaColor.webp",
-                imgPathBackground: "/CollectionInside/InsideHoodieArenaColorBackground.webp",
-            }
-        ],
-        lumen: [
-            {
-                name: "White Tshirt",
-                price: "70.000$",
-                imgPath: "/CollectionLumen/LumenTshirtWhiteColor.webp",
-                imgPathBackground: "/CollectionLumen/LumenTshirtWhiteColorBackground.webp",
-            },
-            {
-                name: "Black Tshirt",
-                price: "70.000$",
-                imgPath: "/CollectionLumen/LumenTshirtBlackColor.webp",
-                imgPathBackground: "/CollectionLumen/LumenTshirtBlackColorBackground.webp",
-            },
-            {
-                name: "Cream Hoodie",
-                price: "140.000$",
-                imgPath: "/CollectionLumen/LumenHoodieCreamColor.webp",
-                imgPathBackground: "/CollectionLumen/LumenHoodieCreamColorBackground.webp",
-            }
-        ],
-    }
+
+export const useStore = create<State & Actions>((set) => ({
+    collections: Collections,
 }))
 
