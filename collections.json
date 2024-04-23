@@ -159,17 +159,146 @@
     "name": "society-madness",
     "description": "x",
     "collectionImgMain": "/CollectionSocMad.webp",
-    "sliderMain": [],
-    "products": [],
-    "gallery": []
+    "sliderMain": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessSlider1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessSlider2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessSlider3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessSlider4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessSlider5.webp"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "Black Hoodie",
+        "price": 140.0,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessHoddieBlackColor.webp",
+        "imgPathBackground": "/CollectionSocietyMadness/SocietyMadnessHoddieBlackColorBackground.webp"
+      },
+      {
+        "id": 2,
+        "name": "White Hoodie",
+        "price": 140.0,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessHoddieWhiteColor.webp",
+        "imgPathBackground": "/CollectionSocietyMadness/SocietyMadnessHoddieWhiteColorBackground.webp"
+      }
+    ],
+    "gallery": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessCollectionGallery1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessCollectionGallery2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessCollectionGallery3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessCollectionGallery4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessCollectionGallery5.webp"
+      },
+      {
+        "id": 6,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessCollectionGallery6.webp"
+      },
+      {
+        "id": 7,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessCollectionGallery7.webp"
+      }
+    ]
   },
   {
     "id": 4,
     "name": "fotosintesis",
     "description": "x",
     "collectionImgMain": "/CollectionFotosintesis1.webp",
-    "sliderMain": [],
-    "products": [],
-    "gallery": []
+    "sliderMain": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionFotosintesis/FotosintesisSlider1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionFotosintesis/FotosintesisSlider2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionFotosintesis/FotosintesisSlider3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionFotosintesis/FotosintesisSlider4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionFotosintesis/FotosintesisSlider5.webp"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "Black Hoodie",
+        "price": 140.0,
+        "imgPath": "/CollectionFotosintesis/FotosintesisHoodieBlackColor.webp",
+        "imgPathBackground": "/CollectionFotosintesis/FotosintesisHoodieBlackColorBackground.webp"
+      },
+      {
+        "id": 2,
+        "name": "Black Tshirt",
+        "price": 70.0,
+        "imgPath": "/CollectionFotosintesis/FotosintesisTshirtBlackColor.webp",
+        "imgPathBackground": "/CollectionFotosintesis/FotosintesisTshirtBlackColorBackground.webp"
+      },
+      {
+        "id": 3,
+        "name": "Gray Tshirt",
+        "price": 70.0,
+        "imgPath": "/CollectionFotosintesis/FotosintesisTshirtGrayColor.webp",
+        "imgPathBackground": "/CollectionFotosintesis/FotosintesisTshirtGrayColorBackground.webp"
+      }
+    ],
+    "gallery": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionFotosintesis/FotosintesisCollectionGallery1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionFotosintesis/FotosintesisCollectionGallery2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionFotosintesis/FotosintesisCollectionGallery3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionFotosintesis/FotosintesisCollectionGallery4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionFotosintesis/FotosintesisCollectionGallery5.webp"
+      }
+    ]
   }
 ]
