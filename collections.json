@@ -47,6 +47,13 @@
         "price": 140.0,
         "imgPath": "/CollectionLumen/LumenHoodieCreamColor.webp",
         "imgPathBackground": "/CollectionLumen/LumenHoodieCreamColorBackground.webp"
+      },
+      {
+        "id": 4,
+        "name": "Brown Hoodie",
+        "price": 140.0,
+        "imgPath": "/CollectionLumen/LumenHoodieBrownColor.webp",
+        "imgPathBackground": "/CollectionLumen/LumenHoodieBrownColorBackground.webp"
       }
     ],
     "gallery": [
@@ -225,6 +232,10 @@
       {
         "id": 7,
         "imgPath": "/CollectionSocietyMadness/SocietyMadnessCollectionGallery7.webp"
+      },
+      {
+        "id": 8,
+        "imgPath": "/CollectionSocietyMadness/SocietyMadnessCollectionGallery8.webp"
       }
     ]
   },
@@ -298,6 +309,146 @@
       {
         "id": 5,
         "imgPath": "/CollectionFotosintesis/FotosintesisCollectionGallery5.webp"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "freedom",
+    "description": "x",
+    "collectionImgMain": "/CollectionFreedom/FreedomIcon.webp",
+    "sliderMain": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionFreedom/FreedomSlider1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionFreedom/FreedomSlider2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionFreedom/FreedomSlider3.webp"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "Black Hoodie",
+        "price": 140.0,
+        "imgPath": "/CollectionFreedom/FreedomHoodieBlackColor.webp",
+        "imgPathBackground": "/CollectionFreedom/FreedomHoodieBlackColorBackground.webp"
+      },
+      {
+        "id": 2,
+        "name": "Black Tshirt",
+        "price": 70.0,
+        "imgPath": "/CollectionFreedom/FreedomTshirtBlackColor.webp",
+        "imgPathBackground": "/CollectionFreedom/FreedomTshirtBlackColorBackground.webp"
+      }
+    ],
+    "gallery": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionFreedom/FreedomCollectionGallery1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionFreedom/FreedomCollectionGallery2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionFreedom/FreedomCollectionGallery3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionFreedom/FreedomCollectionGallery4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionFreedom/FreedomCollectionGallery5.webp"
+      },
+      {
+        "id": 6,
+        "imgPath": "/CollectionFreedom/FreedomCollectionGallery6.webp"
+      },
+      {
+        "id": 7,
+        "imgPath": "/CollectionFreedom/FreedomCollectionGallery7.webp"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "pilot-test",
+    "description": "x",
+    "collectionImgMain": "/CollectionPilotTest.webp",
+    "sliderMain": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionPilotTest/PilotTestSlider1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionPilotTest/PilotTestSlider2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionPilotTest/PilotTestSlider3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionPilotTest/PilotTestSlider4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionPilotTest/PilotTestSlider5.webp"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "Black Hoodie",
+        "price": 140.0,
+        "imgPath": "/CollectionPilotTest/PilotTestHoodieBlackColor.webp",
+        "imgPathBackground": "/CollectionPilotTest/PilotTestHoodieBlackColorBackground.webp"
+      },
+      {
+        "id": 2,
+        "name": "Beige Tshirt",
+        "price": 70.0,
+        "imgPath": "/CollectionPilotTest/PilotTestTshirtBeigeColor.webp",
+        "imgPathBackground": "/CollectionPilotTest/PilotTestTshirtBeigeColorBackground.webp"
+      }
+    ],
+    "gallery": [
+      {
+        "id": 1,
+        "imgPath": "/CollectionPilotTest/PilotTestCollectionGallery1.webp"
+      },
+      {
+        "id": 2,
+        "imgPath": "/CollectionPilotTest/PilotTestCollectionGallery2.webp"
+      },
+      {
+        "id": 3,
+        "imgPath": "/CollectionPilotTest/PilotTestCollectionGallery3.webp"
+      },
+      {
+        "id": 4,
+        "imgPath": "/CollectionPilotTest/PilotTestCollectionGallery4.webp"
+      },
+      {
+        "id": 5,
+        "imgPath": "/CollectionPilotTest/PilotTestCollectionGallery5.webp"
+      },
+      {
+        "id": 6,
+        "imgPath": "/CollectionPilotTest/PilotTestCollectionGallery6.webp"
+      },
+      {
+        "id": 7,
+        "imgPath": "/CollectionPilotTest/PilotTestCollectionGallery7.webp"
       }
     ]
   }
