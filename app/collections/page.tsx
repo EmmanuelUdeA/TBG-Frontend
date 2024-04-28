@@ -2,6 +2,7 @@
 import Slider from "../components/slider";
 import { useState } from "react";
 import { useStore } from "../../store/useStore";
+import { useFetchProducts } from "@/hooks/useProducts";
 
 interface Product {
     id?: number;
@@ -26,9 +27,12 @@ interface Collection {
 }
 
 const Page = () => {
+    const {data, isLoading} = useFetchProducts();
     const store = useStore();
     const [actualCollection, setActualCollection] = useState(0);
     const [collections, setCollections] = useState(store.collections);
+    if(isLoading) return <h1>Hola Mundo</h1>
+    console.log(data);
     const handleBack = () => {
         if (actualCollection !== 0) {
             setActualCollection(actualCollection - 1);
