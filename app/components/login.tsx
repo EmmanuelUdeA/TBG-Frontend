@@ -2,20 +2,12 @@
 import Link from "next/link";
 import { useLogin, useLoginWithGoogle } from "@/hooks/useAuth";
 import { redirect } from "next/navigation";
-import firebase from "firebase/compat/app";
-import { useEffect } from "react";
 import { useStore } from "@/store/useStore";
 
 const Login = () => {
     const updateUser = useStore(state => state.updateUser);
     const login = useLogin();
     const loginWithGoogle = useLoginWithGoogle();
-    useEffect(() => {
-        firebase.auth().onAuthStateChanged(async (user) => {
-            updateUser(loginWithGoogle.data);
-            redirect(`/?uid=${user.uid}`);
-        });
-    }, []);
     const handleSubmit = (formData) => {
         const user = {
             email: formData.get("email"),

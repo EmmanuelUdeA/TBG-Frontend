@@ -4,12 +4,12 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCmpYSfZWpgdjuI_p8F1se_5iF21pB9slg",
-    authDomain: "tripboys.firebaseapp.com",
-    projectId: "tripboys",
-    storageBucket: "tripboys.appspot.com",
-    messagingSenderId: "323603224403",
-    appId: "1:323603224403:web:e3153d631d7b699252b3a6"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID,
+    appId: process.env.APP_ID
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
