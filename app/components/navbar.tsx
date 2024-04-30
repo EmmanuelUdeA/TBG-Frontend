@@ -5,7 +5,6 @@ import { TfiShoppingCartFull } from "react-icons/tfi";
 import { RiContactsLine } from "react-icons/ri";
 import LogoText from "./logoText";
 import Link from "next/link";
-import { signIn, useSession, signOut } from "next-auth/react";
 
 const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
 
@@ -15,8 +14,6 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
     const handleCart = () => {
         setViewCart(!viewCart);
     }
-
-    const { data: session } = useSession();
     return (
         <nav className={`flex flex-row justify-between items-center w-screen h-20 top-0 z-10 px-5 md:scroll-px-5 bg-black text-white`}>
             <section className="flex flex-row justify-start items-center w-full md:w-3/12">
@@ -36,11 +33,14 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
                     <BiSearchAlt className="absolute inset-y-0 h-8 w-8 border-r border-transparent my-auto ml-2" />
                 </form>
                 <TfiShoppingCartFull className=" flex flex-row h-5 w-5 md:h-8 md:w-8 mr-5 cursor-pointer " onClick={handleCart} />
-                {session?.user ?
+                {/*session?.user ?
                     <img src={session.user.image} className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center rounded-full" onClick={() => signOut({ callbackUrl: "/" })} />
                     :
                     <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={() => signIn()} />
-                }
+    */}
+                <Link href="/login">
+                    <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" />
+                </Link>
             </section>
         </nav>
     )

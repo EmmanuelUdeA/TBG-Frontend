@@ -1,8 +1,6 @@
 import { create } from "zustand";
 import Collections from "../collections.json";
 
-console.log(Collections)
-
 interface Product {
     id?: number;
     name: string;
@@ -31,15 +29,38 @@ interface Collection {
     gallery: Gallery[];
 }
 
+interface User {
+    customer_group?: number;
+    document?: string;
+    email: number;
+    id: 2;
+    lastname?: string;
+    name?: string;
+    uid: string;
+    token: string;
+}
+
 type State = {
     collections: Collection[];
+    user: User
 };
 
 type Actions = {
+    updateUser: (user: User) => void;
+    removeUser: () => void;
 };
 
 
 export const useStore = create<State & Actions>((set) => ({
     collections: Collections,
+    user: null,
+    updateUser: (user) =>
+        set(() => ({
+            user: user
+        })),
+    removeUser: () =>
+        set(() => ({
+            user: null
+        }))
 }))
 
