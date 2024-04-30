@@ -1,5 +1,6 @@
 'use client';
-import SignUp from "../components/signup";
+
+/*import SignUp from "../components/signup";
 
 const Page = () => {
     return (
@@ -7,4 +8,4 @@ const Page = () => {
     )
 }
 
-export default Page
+export default Page*/
