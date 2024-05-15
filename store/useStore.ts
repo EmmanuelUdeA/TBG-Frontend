@@ -42,18 +42,28 @@ interface User {
 
 type State = {
     collections: Collection[];
-    user: User
+    user: User,
+    landingImg: LandingImg
 };
 
 type Actions = {
     updateUser: (user: User) => void;
     removeUser: () => void;
+    updateLandingImg: (newImg: LandingImg) => void;
 };
+
+type img = {
+    id: number;
+    imgUrl: string
+}
+
+type LandingImg = img[]
 
 
 export const useStore = create<State & Actions>((set) => ({
     collections: Collections,
     user: null,
+    landingImg: null,
     updateUser: (user) =>
         set(() => ({
             user: user
@@ -61,6 +71,10 @@ export const useStore = create<State & Actions>((set) => ({
     removeUser: () =>
         set(() => ({
             user: null
+        })),
+    updateLandingImg: (newImg: LandingImg) =>
+        set(() => ({
+            landingImg: newImg
         }))
 }))
 
