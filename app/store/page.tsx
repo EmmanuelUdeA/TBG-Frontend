@@ -1,5 +1,5 @@
 "use client";
-import Store from "../components/productList";
+import Store from "../components/store";
 
 const Page = () => {
     const products = [
