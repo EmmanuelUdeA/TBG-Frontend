@@ -22,7 +22,7 @@ const Menu = ({ setViewMenu, viewMenu }) => {
                     </Link>
                 </li>
                 <li className="h-1/4 w-full flex flex-row justify-center items-center">
-                    <Link href="collections" onClick={handleViewMenu}>
+                    <Link href="/collections" onClick={handleViewMenu}>
                         Collections
                     </Link>
                 </li>
