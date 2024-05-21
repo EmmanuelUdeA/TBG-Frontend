@@ -1,69 +1,45 @@
 import { create } from "zustand";
-import Collections from "../collections.json";
-
-interface Product {
-    id?: number;
-    name: string;
-    price: number;
-    imgPath?: string;
-    imgPathBackground?: string;
-}
-
-interface Gallery {
-    id: number;
-    imgPath: string;
-}
-
-interface Slider {
-    id: number;
-    imgPath: string;
-}
-
-interface Collection {
-    id: number;
-    name: string;
-    description: string;
-    collectionImgMain: string;
-    sliderMain: Slider[];
-    products: Product[];
-    gallery: Gallery[];
-}
-
-interface User {
-    customer_group?: number;
-    document?: string;
-    email: number;
-    id: 2;
-    lastname?: string;
-    name?: string;
-    uid: string;
-    token: string;
-}
+import { Product, Collection, Category } from "@/types/product.type";
+import { User } from "@/types/auth.type";
+import { LandingImg } from "@/types/landing.type";
 
 type State = {
     collections: Collection[];
+    products: Product[];
+    categories: Category[];
     user: User,
     landingImg: LandingImg
 };
 
 type Actions = {
+    updateCollections: (collections: Collection[]) => void;
+    updateProducts: (products: Product[]) => void;
+    updateCategories: (categories: Category[]) => void;
     updateUser: (user: User) => void;
     removeUser: () => void;
     updateLandingImg: (newImg: LandingImg) => void;
+    getCollection: (id: number) => Collection;
 };
 
-type img = {
-    id: number;
-    imgUrl: string
-}
 
-type LandingImg = img[]
-
-
-export const useStore = create<State & Actions>((set) => ({
-    collections: Collections,
+export const useStore = create<State & Actions>((set, get) => ({
+    collections: null,
+    products: null,
+    categories: null,
     user: null,
     landingImg: null,
+    updateCollections: (collections: Collection[]) =>
+        set(() => ({
+            collections: collections
+        })),
+    updateProducts: (products: Product[]) =>
+        set(() => ({
+            products: products
+        })),
+    updateCategories: (categories: Category[]) =>
+        set(() => ({
+            categories: categories
+        })),
     updateUser: (user) =>
         set(() => ({
             user: user
@@ -75,6 +51,13 @@ export const useStore = create<State & Actions>((set) => ({
     updateLandingImg: (newImg: LandingImg) =>
         set(() => ({
             landingImg: newImg
-        }))
+        })),
+    getCollection: (id: number) => {
+        const state = get();
+        if (state.collections && Array.isArray(state.collections)) {
+            return state.collections.find((collection) => collection.id === id);
+        }
+        return null;
+    }
 }))
 

@@ -7,7 +7,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import queryClient from "./queryClient";
 
 export const metadata: Metadata = {
-  title: "TBGSHOP",
+  title: "TBG SHOP",
   description: "Trip boys gang shop",
 };
 
@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/logo.svg" />
         <Botpress />
       </head>
       <body className={GeistSans.className} >
