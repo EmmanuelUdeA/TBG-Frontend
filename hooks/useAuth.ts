@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import server from "../server/tbg-server";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { LoginResponse, User } from "@/types/auth.type";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCmpYSfZWpgdjuI_p8F1se_5iF21pB9slg",
@@ -13,26 +14,6 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
-
-interface LoginResponse {
-    auth: true;
-    token: string;
-    role: string;
-    user?: User;
-    error?: string;
-    status?: number
-}
-
-interface User {
-    id: number;
-    name: string;
-    lastname: string;
-    admin_pin?: any;
-    document: string;
-    email: number;
-    address: number;
-    uid: string;
-}
 
 async function fetchLogin(email: string, password: string) {
     const res = await server.post<LoginResponse>('/auth/signin', {

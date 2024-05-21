@@ -1,47 +1,45 @@
 'use client';
-import SliderCollections from "@/app/components/sliderCollections";
+import CollectionSlider from "@/app/components/collectionSlider";
 import CollectionDescription from "@/app/components/collectionDescription";
 import CollectionProductList from "@/app/components/collectionProductList";
-import Gallery from "@/app/components/gallery";
+import CollectionGallery from "@/app/components/collectionGallery";
 import { usePathname } from "next/navigation";
 import { useStore } from "@/store/useStore";
 import { useEffect, useState } from "react";
-
-interface Product {
-    id?: number;
-    name: string;
-    price: number;
-    imgPath?: string;
-    imgPathBackground?: string;
-    imgPathFront?: string;
-    imgPathBack?: string;
-}
-
-interface Gallery {
-    id: number;
-    imgPath: string;
-}
-
-interface Collection {
-    id: number;
-    name: string;
-    description: string;
-    collectionImgMain: string;
-    products: Product[];
-    gallery: Gallery[];
-}
+import { useFetchCollections } from "@/hooks/useProducts";
 
 const Page = () => {
-    const store = useStore();
     const path = usePathname();
-    const collName = path.split("/")[2];
-    const [collection, setCollection] = useState(store.collections.find((coll: Collection) => coll.name === collName));
+    const collections = useStore(store => store.collections);
+    const getCollection = useStore(store => store.getCollection);
+    const updateCollections = useStore(state => state.updateCollections);
+    const fetchCollections = useFetchCollections();
+    const [collection, setCollection] = useState(null);
+    useEffect(() => {
+        if (!collections) {
+            fetchCollections.mutate();
+        } else {
+            const id = parseInt(path.split("/")[2]);
+            const result = getCollection(id);
+            console.log(result)
+            setCollection(result);
+        }
+    }, []);
+    useEffect(() => {
+        if (fetchCollections.isSuccess) {
+            const data = fetchCollections.data;
+            updateCollections(data);
+            const id = parseInt(path.split("/")[2]);
+            const result = getCollection(id);
+            setCollection(result);
+        }
+    }, [fetchCollections.isSuccess]);
     return (
-        <div className="flex flex-col w-screen h-auto justify-start items-center">
-            <SliderCollections collSlider={collection?.sliderMain} />
-            <CollectionDescription collName={collection.name} collDescription={collection.description} />
-            <CollectionProductList products={collection.products} />
-            <Gallery gallery={collection.gallery} />
+        <div className="flex flex-col w-screen h-auto justify-center items-center">
+            {collection && <CollectionSlider collSlider={collection.tbl_collection_slider} />}
+            {collection && <CollectionDescription collName={collection.name} collDescription={collection.description} />}
+            {collection && <CollectionProductList products={collection.tbl_product} />}
+            {collection && <CollectionGallery gallery={collection.tbl_gallery} />}
         </div>
     )
 }

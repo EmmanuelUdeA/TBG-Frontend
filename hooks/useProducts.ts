@@ -1,22 +1,38 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import server from "../server/tbg-server";
-
-interface Product {
-    id: number;
-    name: string;
-    description?: string;
-    start_date?: string;
-    finish_date?: string;
-}
+import { Product, Collection, Category } from "@/types/product.type";
 
 async function fetchProducts() {
-    const { data } = await server.get<Product[]>('/product/collection');
+    const { data } = await server.get<Product[]>('/product/products');
     return data;
 }
 
 export function useFetchProducts() {
-    return useQuery({
-        queryKey: ['products'],
-        queryFn: fetchProducts
+    return useMutation({
+        mutationFn: fetchProducts,
     })
 }
+
+async function fetchCollections() {
+    const { data } = await server.get<Collection[]>('/product/collections');
+    return data;
+}
+
+export function useFetchCollections() {
+    return useMutation({
+        mutationFn: fetchCollections
+    })
+}
+
+async function fetchCategories() {
+    const { data } = await server.get<Category[]>('/product/categories');
+    return data;
+}
+
+export function useFetchCategories() {
+    return useMutation({
+        mutationFn: fetchCategories
+    })
+}
+
+
