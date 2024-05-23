@@ -37,9 +37,9 @@ const Page = () => {
     return (
         <div className="w-screen flex flex-row h-screen bg-cover bg-no-repeat overflow-hidden justify-center items-center">
             {collections && <Link href={"/collections/" + collections[actualCollection].id} className="flex w-full h-full justify-center items-center cursor-pointer flex-col flex-wrap">
-                <img className="w-1/2 h-full flex flex-col justify-center items-center" alt="collection" src={collections[actualCollection].main_img} />
-                <img className="w-1/2 h-1/2 flex flex-col justify-center items-center" alt="collection" src={collections[actualCollection].cover_img_1} />
-                <img className="w-1/2 h-1/2 flex flex-col justify-center items-center" alt="collection" src={collections[actualCollection].cover_img_2} />
+                <img className="w-1/2 h-full flex flex-col justify-center items-center bg-orange-500" alt="collection" src={collections[actualCollection].main_img} />
+                <img className="w-1/2 h-1/2 flex flex-col justify-center items-center bg-red-600" alt="collection" src={collections[actualCollection].cover_img_1} />
+                <img className="w-1/2 h-1/2 flex flex-col justify-center items-center bg-amber-400" alt="collection" src={collections[actualCollection].cover_img_2} />
             </Link>}
             <section className="flex flex-row h-20 w-screen justify-between items-center absolute px-10 text-black">
                 <IoIosArrowBack onClick={handleBack} className={actualCollection === 0 ? "opacity-40" : "cursor-pointer"} size={30} />
