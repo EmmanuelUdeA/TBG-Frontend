@@ -5,12 +5,27 @@ import { GoTrash } from "react-icons/go";
 import { useState } from "react";
 
 const CartShop = ({ viewCart, setViewCart }) => {
+    const cartProducts = useStore(state => state.cart);
+    const updateCartProduct = useStore(state => state.updateCart);
+    const removeCartProduct = useStore(state => state.removeFromCart);
+    const addProductQuantity = useStore(state => state.addProductQuantity);
+    const removeProductQuantity = useStore(state => state.removeProductQuantity);
+    //const fetchLandingImg = useFetchLandingImg();
+    /*useEffect(() => {
+        if (!landingImg) {
+            fetchLandingImg.mutate();
+        }
+    }, []);
+    useEffect(() => {
+        if (fetchLandingImg.isSuccess) {
+            const data = fetchLandingImg.data;
+            updateLandingImg(data);
+        }
+    }, [fetchLandingImg.isSuccess])*/
     const handleViewMenu = () => {
         setViewCart(!viewCart)
     }
-    const products = useStore(state => state.collections[0].products);
-
-    const [subtotal] = useState(products.reduce((acc, product) => acc + product.price, 0));
+    const [subtotal, setSubtotal] = useState(cartProducts ? cartProducts.reduce((acc, product) => acc + product.price, 0) : null);
     return (
         <div className="w-screen h-full flex flex-col justify-center items-end fixed z-50 bg-opacity-80 bg-black text-white text-2xl">
             <section className="w-1/3 h-full flex flex-col justify-start items-center bg-white">
@@ -18,11 +33,10 @@ const CartShop = ({ viewCart, setViewCart }) => {
                     <h1 className="font-bold text-black ml-5"> Cart Shop </h1>
                     <VscClose className="cursor-pointer mr-8 text-black justify-center items-center" size={30} onClick={handleViewMenu} />
                 </section>
-
                 <ul className="w-full h-auto flex flex-col justify-center items-start overflow-y-visible overflow-x-hidden pt-20 ">
-                    {products.map((product, index) => (
-                        <li className="w-full h-auto flex flex-row justify-start items-center text-black my-4 ml-8">
-                            <img className="w-32 h-40 " src={product.imgPath} alt={product.name} />
+                    {cartProducts && cartProducts.map((product, index) => (
+                        <li className="w-full h-auto flex flex-row justify-start items-center text-black my-4 ml-8" key={index}>
+                            <img className="w-32 h-40 " src={/*product.front_img.toString()*/""} alt={product.name} />
                             <section className="w-auto h-full flex flex-col justify-between items-start p-6 ">
                                 <h1 className="h-4 w-auto flex flex-row text-sm">{product.name}</h1>
                                 <p className="h-4 w-auto flex flex-row text-xs">{product.price} $</p>
@@ -40,10 +54,10 @@ const CartShop = ({ viewCart, setViewCart }) => {
                     ))
                     }
                 </ul>
-                <section className="w-full h-auto flex flex-row justify-start items-center text-black text-xl pt-5 shadow-[rgba(0,0,15,0.5)_0px_-8px_6px_-6px]">
+                {cartProducts && <section className="w-full h-auto flex flex-row justify-start items-center text-black text-xl pt-5 shadow-[rgba(0,0,15,0.5)_0px_-8px_6px_-6px]">
                     <p className="flex flex-row h-full w-full pl-5 pr-10 justify-between items-center">Subtotal: <label>{subtotal} $</label></p>
-                </section>
-                <button className="w-3/4 h-auto bg-sky-600 text-white font-bold p-3 mt-5 mb-5 rounded-xl">Checkout</button>
+                </section>}
+                {cartProducts && <button className="w-3/4 h-auto bg-sky-600 text-white font-bold p-3 mt-5 mb-5 rounded-xl">Checkout</button>}
             </section>
 
         </div>

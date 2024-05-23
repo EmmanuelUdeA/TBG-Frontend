@@ -4,6 +4,7 @@ import { IoIosWarning } from "react-icons/io";
 
 const CollectionSlider = ({ collSlider }) => {
     const [actualCollection, setActualCollection] = useState(0);
+    const [imgClass] = useState(`bg-[url('/Lumen/Slider/Slider${actualCollection + 1}-blur.jpg')] bg-cover bg-center w-full h-screen blur-load`);
     useEffect(() => {
         const intervalId = setInterval(() => {
             handleCollections()
@@ -17,14 +18,11 @@ const CollectionSlider = ({ collSlider }) => {
             setActualCollection(actualCollection + 1)
         }
     }
-    console.log(collSlider)
     return (
         <div className="flex flex-row w-screen h-screen bg-cover bg-no-repeat overflow-hidden justify-center items-center cursor-pointer transition duration-300 ease-in-out">
-            {collSlider.length > 0 ? <img onClick={handleCollections} className="w-full h-full" alt="collection" src={collSlider[actualCollection].pathname} /> :
-                <section className="flex w-full h-full justify-center items-center bg-gray-300">
-                    <IoIosWarning className="h-10 w-10 md:h-8 md:w-8" />
-                </section>
-            }
+            <div onClick={handleCollections} className="bg-cover bg-center w-full h-screen blur-load" style={{ backgroundImage: `url('/Lumen/Slider/Slider${actualCollection + 1}-blur.jpg')` }}>
+                {collSlider.length>0 && <img src={collSlider[actualCollection].pathname} alt="" loading="lazy" className="w-full h-full" />}
+            </div>
         </div>
     )
 }
