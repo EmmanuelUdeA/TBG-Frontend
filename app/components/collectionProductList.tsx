@@ -8,12 +8,11 @@ const CollectionProductList = ({ products }) => {
             {products.length > 0 && products.map((prod: any, index: number) => {
                 return (
                     <li
-                        style={{ backgroundImage: `url(${prod.back_img})` }}
-                        className="flex flex-col w-1/6 h-auto justify-center items-center mx-8 mb-10 bg-cover bg-no-repeat"
+                        className="flex flex-col w-1/6 h-auto justify-center items-center mx-8 mb-10"
                         key={index}
                     >
                         <Link href={"/store/product/" + prod.id} className="w-full h-auto flex flex-col justify-center items-center cursor-pointer">
-                            {prod.front_img ? <img src={prod.front_img} alt={prod.name} className="flex w-full h-96 justify-center items-center hover:opacity-0 hover:transition-all duration-200" /> :
+                            {prod.front_image ? <img src={prod.front_image} style={{ backgroundImage: `url(${prod.back_image})` }} alt={prod.name} className="flex w-full h-96 justify-center items-center hover:opacity-0 hover:transition-all duration-200 bg-cover bg-no-repeat" /> :
                                 <section className="flex w-full h-96 justify-center items-center bg-gray-300">
                                     <IoIosWarning className="h-5 w-5 md:h-8 md:w-8" />
                                 </section>}

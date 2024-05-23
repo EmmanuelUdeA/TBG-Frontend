@@ -1,16 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import server from "../server/tbg-server";
-
-type LandingImg = {
-    id: number;
-    imgUrl: string;
-    status?: number;
-}
-
-type Response = LandingImg[]
+import { LandingImg } from "@/types/landing.type";
 
 async function fetchLandingImg() {
-    const { data } = await server.get<Response>(`/landing`);
+    const { data } = await server.get<LandingImg>(`/landing`);
     return data;
 }
 

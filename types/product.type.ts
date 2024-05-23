@@ -4,9 +4,10 @@ export interface Product {
     collection: number
     price: number
     color: number
-    front_img: number
-    back_img: number
+    front_image: string
+    back_image: string
     category: number
+    quantity?: number
 }
 
 export interface Collection {
