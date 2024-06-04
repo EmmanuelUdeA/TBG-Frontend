@@ -41,7 +41,7 @@ const Page = () => {
                 <img className="w-1/2 h-1/2 flex flex-col justify-center items-center bg-red-600" alt="collection" src={collections[actualCollection].cover_img_1} />
                 <img className="w-1/2 h-1/2 flex flex-col justify-center items-center bg-amber-400" alt="collection" src={collections[actualCollection].cover_img_2} />
             </Link>}
-            <section className="flex flex-row h-20 w-screen justify-between items-center absolute px-10 text-black">
+            <section className="flex flex-row h-20 w-screen justify-between items-center absolute px-10 text-white bg-black">
                 <IoIosArrowBack onClick={handleBack} className={actualCollection === 0 ? "opacity-40" : "cursor-pointer"} size={30} />
                 {collections && <p className="cursor-pointer text-3xl font-extrabold h-full w-auto flex flex-row justify-center items-center">{collections[actualCollection].name}</p>}
                 <IoIosArrowForward onClick={handleForward} className={actualCollection === collectionsLength ? "opacity-40 mr-5" : "cursor-pointer mr-5"} size={30} />
