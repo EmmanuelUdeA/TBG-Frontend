@@ -12,7 +12,7 @@ const CollectionProductList = ({ products }) => {
                         key={index}
                     >
                         <Link href={"/store/product/" + prod.id} className="w-full h-auto flex flex-col justify-center items-center cursor-pointer">
-                            {prod.front_image ? <img src={prod.front_image} style={{ backgroundImage: `url(${prod.back_image})` }} alt={prod.name} className="flex w-full h-96 justify-center items-center hover:opacity-0 hover:transition-all duration-200 bg-cover bg-no-repeat" /> :
+                            {prod.front_image ? <img src={prod.front_image} alt={prod.name} className="flex w-full h-96 justify-center items-center" /> :
                                 <section className="flex w-full h-96 justify-center items-center bg-gray-300">
                                     <IoIosWarning className="h-5 w-5 md:h-8 md:w-8" />
                                 </section>}

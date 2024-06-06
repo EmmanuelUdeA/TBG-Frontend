@@ -67,7 +67,7 @@ export const useStore = create<State & Actions>((set, get) => ({
         set((state) => {
             const updatedCart = state.cart.map(product => {
                 if (product.id === productId) {
-                    if (product.quantity >= 20) return product;
+                    if (product.quantity >= 5) return product;
                     return {
                         ...product,
                         quantity: product.quantity + 1
@@ -96,7 +96,7 @@ export const useStore = create<State & Actions>((set, get) => ({
                     return product;
                 })
                 .filter(product => product !== null); 
-            return { cart: updatedCart };
+            return { cart: updatedCart.length === 0 ? null : updatedCart };
         }),
     removeFromCart: (productId: number) =>
         set((state) => ({

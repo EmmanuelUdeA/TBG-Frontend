@@ -3,11 +3,13 @@ import { TbMenu2 } from "react-icons/tb";
 import { BiSearchAlt } from "react-icons/bi";
 import { TfiShoppingCartFull } from "react-icons/tfi";
 import { RiContactsLine } from "react-icons/ri";
-import LogoText from "./logoText";
 import Link from "next/link";
+import { FaUserAstronaut } from "react-icons/fa";
+import { useSearchParams } from "next/navigation";
 
 const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
-
+    const searchParams = useSearchParams();
+    const uid = searchParams.get('uid');
     const handleView = () => {
         setViewMenu(!viewMenu);
     }
@@ -33,14 +35,12 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
                     <BiSearchAlt className="absolute inset-y-0 h-8 w-8 border-r border-transparent my-auto ml-2" />
                 </form>
                 <TfiShoppingCartFull className=" flex flex-row h-5 w-5 md:h-8 md:w-8 mr-5 cursor-pointer " onClick={handleCart} />
-                {/*session?.user ?
-                    <img src={session.user.image} className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center rounded-full" onClick={() => signOut({ callbackUrl: "/" })} />
+                {uid ?
+                    <FaUserAstronaut className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" />
                     :
-                    <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={() => signIn()} />
-    */}
-                <Link href="/login">
-                    <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" />
-                </Link>
+                    <Link href="/login">
+                        <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" />
+                    </Link>}
             </section>
         </nav>
     )
