@@ -1,12 +1,13 @@
 export interface User {
-    customer_group?: number;
-    document?: string;
-    email: number;
-    id: 2;
-    lastname?: string;
-    name?: string;
-    uid: string;
-    token: string;
+    id: number
+    name: string
+    lastname: string
+    admin_pin: any
+    document: string
+    email: number
+    address: number
+    uid: string
+    token: string
 }
 
 export interface LoginResponse {

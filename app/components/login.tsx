@@ -26,7 +26,8 @@ const Login = () => {
     }
     if (loginWithGoogle.isSuccess) {
         if (loginWithGoogle.data.uid) {
-            redirect(`/?uid=${login.data.uid}`);
+            console.log(loginWithGoogle.data)
+            redirect(`/?uid=${loginWithGoogle.data.uid}`);
         }
     }
     const updateLandingImg = useStore(state => state.updateLandingImg);
