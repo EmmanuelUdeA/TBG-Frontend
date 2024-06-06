@@ -1,10 +1,10 @@
 'use client';
 
-import SignUp from "../components/signUp";
+import Signup from "../components/signup";
 
 const Page = () => {
     return (
-        <SignUp />
+        <Signup />
     )
 }
 export default Page

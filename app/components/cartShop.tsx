@@ -2,30 +2,31 @@
 import { VscClose } from "react-icons/vsc";
 import { useStore } from "@/store/useStore";
 import { GoTrash } from "react-icons/go";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CartShop = ({ viewCart, setViewCart }) => {
     const cartProducts = useStore(state => state.cart);
-    const updateCartProduct = useStore(state => state.updateCart);
     const removeCartProduct = useStore(state => state.removeFromCart);
     const addProductQuantity = useStore(state => state.addProductQuantity);
     const removeProductQuantity = useStore(state => state.removeProductQuantity);
-    //const fetchLandingImg = useFetchLandingImg();
-    /*useEffect(() => {
-        if (!landingImg) {
-            fetchLandingImg.mutate();
-        }
-    }, []);
-    useEffect(() => {
-        if (fetchLandingImg.isSuccess) {
-            const data = fetchLandingImg.data;
-            updateLandingImg(data);
-        }
-    }, [fetchLandingImg.isSuccess])*/
     const handleViewMenu = () => {
         setViewCart(!viewCart)
     }
-    const [subtotal, setSubtotal] = useState(cartProducts ? cartProducts.reduce((acc, product) => acc + product.price, 0) : null);
+    const getSubtotal = (products) => {
+        if (products) {
+            let subtotal = 0;
+            for (let i = 0; i < products.length; i++) {
+                subtotal += products[i].price * products[i].quantity;
+            }
+            return subtotal;
+        }
+        else return null;
+    }
+    const [subtotal, setSubtotal] = useState(cartProducts ? getSubtotal(cartProducts) : null);
+    useEffect(() => {
+        let subtotal = getSubtotal(cartProducts);
+        setSubtotal(subtotal)
+    }, [cartProducts]);
     return (
         <div className="w-screen h-full flex flex-col justify-center items-end fixed z-50 bg-opacity-80 bg-black text-white text-2xl">
             <section className="w-1/3 h-full flex flex-col justify-start items-center bg-white">
@@ -33,28 +34,28 @@ const CartShop = ({ viewCart, setViewCart }) => {
                     <h1 className="font-bold text-black ml-5"> Cart Shop </h1>
                     <VscClose className="cursor-pointer mr-8 text-black justify-center items-center" size={30} onClick={handleViewMenu} />
                 </section>
-                <ul className="w-full h-auto flex flex-col justify-center items-start overflow-y-visible overflow-x-hidden pt-20 ">
+                <ul className="w-full h-auto flex flex-col justify-center items-start overflow-y-visible overflow-x-hidden pt-10 ">
                     {cartProducts && cartProducts.map((product, index) => (
                         <li className="w-full h-auto flex flex-row justify-start items-center text-black my-4 ml-8" key={index}>
-                            <img className="w-32 h-40 " src={/*product.front_img.toString()*/""} alt={product.name} />
+                            <img className="w-32 h-40 " src={product.front_image} alt={product.name} />
                             <section className="w-auto h-full flex flex-col justify-between items-start p-6 ">
                                 <h1 className="h-4 w-auto flex flex-row text-sm">{product.name}</h1>
                                 <p className="h-4 w-auto flex flex-row text-xs">{product.price} $</p>
-                                <p className="h-4 w-auto flex flex-row text-xs">XL</p>
+                                <p className="h-4 w-auto flex flex-row text-xs">{product.size}</p>
                                 <section className="flex flex-row w-full h-10 justify-between items-center">
                                     <div className="flex flex-row h-10 w-24 justify-between items-center rounded-xl bg-gray-200 mr-20 ">
-                                        <button className="text-base w-1/3 flex justify-center items-center  ">-</button>
-                                        <span className="text-base">1</span>
-                                        <button className="text-base w-1/3 flex justify-center items-center">+</button>
+                                        <button className="text-base w-1/3 flex justify-center items-center" onClick={() => removeProductQuantity(product.id)}>-</button>
+                                        <span className="text-base">{product.quantity}</span>
+                                        <button className="text-base w-1/3 flex justify-center items-center" onClick={() => addProductQuantity(product.id)}>+</button>
                                     </div>
-                                    <GoTrash />
+                                    <GoTrash className="cursor-puntor" onClick={() => removeCartProduct(product.id)} />
                                 </section>
                             </section>
                         </li>
                     ))
                     }
                 </ul>
-                {cartProducts && <section className="w-full h-auto flex flex-row justify-start items-center text-black text-xl pt-5 shadow-[rgba(0,0,15,0.5)_0px_-8px_6px_-6px]">
+                {cartProducts && <section className="w-full h-auto flex flex-row justify-start items-center text-black text-xl pt-5 shadow-[rgba(0,0,15,0.5)_0px_-8px_6px_-6px] mt-10">
                     <p className="flex flex-row h-full w-full pl-5 pr-10 justify-between items-center">Subtotal: <label>{subtotal} $</label></p>
                 </section>}
                 {cartProducts && <button className="w-3/4 h-auto bg-sky-600 text-white font-bold p-3 mt-5 mb-5 rounded-xl">Checkout</button>}

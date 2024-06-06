@@ -5,6 +5,7 @@ import { Botpress } from "./components/botpress";
 import NavbarLayout from "./components/navbarLayout";
 import { QueryClientProvider } from "@tanstack/react-query";
 import queryClient from "./queryClient";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "TBG SHOP",
@@ -26,6 +27,7 @@ export default function RootLayout({
         <QueryClientProvider client={queryClient}>
           <NavbarLayout>
             {children}
+            <Toaster richColors closeButton position="bottom-center"/>
           </NavbarLayout>
         </QueryClientProvider>
       </body>

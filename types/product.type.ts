@@ -8,6 +8,7 @@ export interface Product {
     back_image: string
     category: number
     quantity?: number
+    size?: string
 }
 
 export interface Collection {
