@@ -1,8 +1,8 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import server from "../server/tbg-server";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import { LoginResponse, User } from "@/types/auth.type";
+import { LoginResponse } from "@/types/auth.type";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCmpYSfZWpgdjuI_p8F1se_5iF21pB9slg",
@@ -84,11 +84,11 @@ async function fetchLoginWithGoogle() {
             localStorage.setItem('role', data.role);
             data.user["token"] = token;
             return data.user;
-        }).catch((e)=>{
+        }).catch((e) => {
             return e;
         });
         return res;
-    }).catch((e)=>{
+    }).catch((e) => {
         return e;
     });
     return res;
@@ -118,7 +118,7 @@ export const useLogouWithGoogle = () => {
     })
 }
 
-async function fetchSignup(name:string, lastname: string, email: string, password: string) {
+async function fetchSignup(name: string, lastname: string, email: string, password: string) {
     const res = await server.post<LoginResponse>('/auth/signup', {
         name: name,
         lastname: lastname,

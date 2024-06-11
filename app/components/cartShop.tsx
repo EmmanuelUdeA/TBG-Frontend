@@ -35,8 +35,8 @@ const CartShop = ({ viewCart, setViewCart }) => {
                     <VscClose className="cursor-pointer mr-8 text-black justify-center items-center" size={30} onClick={handleViewMenu} />
                 </section>
                 <ul className="w-full h-auto flex flex-col justify-center items-start overflow-y-visible overflow-x-hidden pt-10 ">
-                    {cartProducts && cartProducts.map((product, index) => (
-                        <li className="w-full h-auto flex flex-row justify-start items-center text-black my-4 ml-8" key={index}>
+                    {cartProducts?.map((product) => (
+                        <li className="w-full h-auto flex flex-row justify-start items-center text-black my-4 ml-8" key={product.id}>
                             <img className="w-32 h-40 " src={product.front_image} alt={product.name} />
                             <section className="w-auto h-full flex flex-col justify-between items-start p-6 ">
                                 <h1 className="h-4 w-auto flex flex-row text-sm">{product.name}</h1>

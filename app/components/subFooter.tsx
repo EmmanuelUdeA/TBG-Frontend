@@ -13,6 +13,9 @@ const SubFooter = () => {
                     Contact Us
                 </h1>
                 <ul className="text-sm flex flex-col justify-center md:justify-start items-start w-full h-4/5">
+                    <li className="w-full h-1/2 flex flex-row justify-center md:justify-start items-center hover:text-blue-500">
+                        <Link href="/contactUs">Contact Us</Link>
+                    </li>
                     <li className="w-full h-1/2 flex flex-row justify-center md:justify-start items-center">
                         +57 324 5769790
                     </li>
