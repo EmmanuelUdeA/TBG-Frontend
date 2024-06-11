@@ -21,7 +21,7 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
             <section className="flex flex-row justify-start items-center w-full md:w-3/12">
                 <TbMenu2
                     className="flex flex-row h-5 w-5 md:h-7 md:w-7 cursor-pointer text-white " onClick={handleView} />
-                <label className="hidden md:flex flex-row h-full justify-center items-center text-base ml-3 font-bold">Menu</label>
+                <span className="hidden md:flex flex-row h-full justify-center items-center text-base ml-3 font-bold">Menu</span>
             </section>
             <section className="hidden md:flex flex-row justify-center items-center w-6/12 h-full">
                 <Link href="/" className="filter grayscale">

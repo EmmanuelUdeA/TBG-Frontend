@@ -16,7 +16,7 @@ const Footer = () => {
             </section>
             <section className="flex flex-row w-1/5 h-full justify-center items-center">
                 <h1 className="text-slate-50 flex flex-row justify-center items-center h-full w-full">
-                    TBG <label>&#174;</label>
+                    TBG <span>&#174;</span>
                 </h1>
             </section>
         </footer>

@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import server from "../server/tbg-server";
 import { Product, Collection, Category } from "@/types/product.type";
 

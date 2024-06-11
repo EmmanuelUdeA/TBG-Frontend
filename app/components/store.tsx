@@ -2,10 +2,8 @@
 import Link from "next/link";
 import { useStore } from "@/store/useStore";
 import { useFetchProducts, useFetchCategories } from "@/hooks/useProducts";
-import { IoIosWarning } from "react-icons/io";
 import { useEffect, useState } from "react";
-import { IoIosArrowForward } from "react-icons/io";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowForward, IoIosArrowDown, IoIosWarning } from "react-icons/io";
 import Pagination from "./pagination";
 
 const Store = () => {
@@ -32,7 +30,7 @@ const Store = () => {
         if (fetchProducts.isSuccess) {
             const data = fetchProducts.data;
             updateProducts(data);
-            const actualData = data.slice(productsPerPage * actualPage, (productsPerPage * actualPage) + productsPerPage);
+
         }
         if (fetchCategories.isSuccess) {
             const data = fetchCategories.data;
@@ -51,12 +49,20 @@ const Store = () => {
     }
     return (
         <div className="flex w-screen h-auto">
-            <div className="flex flex-row flex-wrap w-full h-auto justify-start items-start mb-12">
+            <div className="flex flex-row flex-wrap w-full h-auto justify-start items-start mb-12 overflow-y-auto">
                 <h1 className="flex w-full h-12 justify-center items-center text-3xl mt-20 font-extrabold">Store</h1>
-                <section className="flex flex-col w-1/4 h-auto justify-start items-center my-20 shadow-[2px_0_2px_-2px_rgba(0,0,0,0.7)] pb-40">
+                <section className="flex flex-col w-1/4 h-auto justify-start items-center my-20 shadow-[2px_0_2px_-2px_rgba(0,0,0,0.7)] pb-40 ">
                     <h2 className="flex flex-row w-full h-auto justify-center items-center font-bold text-xl">Filters</h2>
                     <ul className="flex flex-col justify-center items-center w-full h-auto mt-10">
-                        <li className="flex flex-row w-full h-10 cursor-pointer justify-between items-center px-10" onClick={handleViewCategories}>
+                        <li
+                            className="flex flex-row w-full h-10 cursor-pointer justify-between items-center px-10"
+                            role="button"
+                            tabIndex={0}
+                            onClick={handleViewCategories}
+                            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleViewCategories(); }}
+                            aria-expanded={viewCategories}
+                            aria-label="View categories"
+                        >
                             Category {viewCategories ? <IoIosArrowDown /> : <IoIosArrowForward />}
                         </li>
                         {viewCategories && <ul className="flex flex-col justify-center items-start w-full h-auto">
@@ -77,9 +83,9 @@ const Store = () => {
                     </ul>
                 </section>
                 <ul className="flex flex-row w-3/4 h-screen justify-center items-start my-20 flex-wrap">
-                    {actualProducts && actualProducts.map((p: any, i: any) => {
+                    {actualProducts?.map((p: any) => {
                         return (
-                            <li key={i} className="flex flex-col w-1/5 h-auto justify-center items-center mx-8 mb-10">
+                            <li key={p.id} className="flex flex-col w-1/5 h-auto justify-center items-center mx-8 mb-10">
                                 <Link href={"/store/product/" + p.id} className="w-full h-auto flex flex-col justify-center items-center ">
                                     {p.front_image ? <img src={p.front_image} alt={p.name} className="flex w-full h-96 justify-center items-center" /> :
                                         <section className="flex w-full h-96 justify-center items-center bg-gray-300">

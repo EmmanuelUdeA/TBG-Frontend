@@ -46,7 +46,7 @@ const Login = () => {
     }, [fetchLandingImg.isSuccess])
     return (
         <div className="bg-[url('/Landing/Landing1-blur.jpg')] bg-cover bg-center w-screen h-screen blur-load flex justify-center items-center">
-            <section className="w-1/3 h-4/6 flex flex-col justify-center items-center bg-white rounded-md z-50 absolute">
+            <section className="w-1/3 h-5/6 flex flex-col justify-center items-center bg-white rounded-md z-50 absolute">
                 <h1 className="w-full h-12 flex flex-row justify-center items-end text-4xl">
                     Login
                 </h1>
@@ -65,7 +65,7 @@ const Login = () => {
                     <Link className="ml-4 text-sky-500" href="/signup">Create account</Link>
                 </p>
                 <button onClick={() => loginWithGoogle.mutate()} className="flex flex-row justify-center items-center py-2 px-8 border border-gray-400 bg-white rounded-lg">
-                    <FcGoogle className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center mr-2"/>
+                    <FcGoogle className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center mr-2" />
                     <span>Continue with Google</span>
                 </button>
             </section>
