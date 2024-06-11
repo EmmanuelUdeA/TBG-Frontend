@@ -1,15 +1,15 @@
 const Help = () => {
     return (
-        <div className="justify-start w-screen flex-col items-center h-screen text-center mb-28 overflow-y-auto">
-            <h2 className="text-2xl font-bold mb-5 bg-black text-yellow-50 w-full p-5">Help</h2>
-            <div className="flex flex-col justify-center items-center w-full">
-                <h3 className="font-semibold text-4xl mb-4 h-10 w-full">Frequent Question</h3>
-                <p className="text-center w-1/2 h-auto my-3 ">Aquí puedes escribir sobre las preguntas frecuentes Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem perspiciatis beatae quos repudiandae officia. Molestias voluptatum provident quod. Tenetur at tempore numquam libero eius nostrum, adipisci labore eveniet dolore recusandae?
+        <div className="justify-start w-screen flex-col items-center h-auto text-center mt-40 mb-16">
+            <h2 className="text-4xl font-bold mb-5 text-black w-full p-5">Help</h2>
+            <div className="flex flex-col justify-center items-center w-full h-auto">
+                <h3 className="font-semibold text-2xl mb-4 mt-10 h-10 w-full">Frequent Questions</h3>
+                <p className="text-center w-1/2 h-auto my-3 ">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem perspiciatis beatae quos repudiandae officia. Molestias voluptatum provident quod. Tenetur at tempore numquam libero eius nostrum, adipisci labore eveniet dolore recusandae?
                     Iste minus, molestias repellendus rerum iusto necessitatibus eum expedita, nostrum modi, porro fugiat. Deserunt iusto, asperiores ullam distinctio veniam voluptatibus ut modi saepe impedit eos. Exercitationem dolore voluptatem error cumque!.</p>
-
-                <h3 className="font-semibold text-4xl mb-4 h-10 w-full">Refunds and Warranties</h3>
-                <p className="text-center w-1/2 h-auto my-3 ">HOW TO MAKE AN EXCHANGE?
-
+                <h3 className="font-semibold text-2xl mb-4 mt-10 h-10 w-full">Refunds and Warranties</h3>
+                <p className="text-center w-1/2 h-auto my-3 ">{/*HOW TO MAKE AN EXCHANGE?
+                    <h1 className="text-4xl font-bold text-black">Formatee bien eso ome carenalga, esto es html, no word</h1>
 
 
                     To make an exchange of a product you purchased at www.tripboysgang.com :
@@ -76,11 +76,19 @@ const Help = () => {
 
 
                     In this case, tripboysgang® will be responsible for the shipping costs. Remember that a product warranty claim can be made up to thirty (30) days after your purchase (Invoice date). If the defect does not meet the conditions for warranty returns, we will inform you via e-mail the reason why we do not make the return and the product will be sent back to the initial delivery address.
-
+*/}                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam itaque labore a earum quae illum quidem, et dicta sint ipsa sapiente quasi incidunt porro eaque in deleniti rem unde voluptatibus.
+                    Consequatur adipisci hic ratione eaque, provident ipsa quos aut facere iusto nulla vitae illo sit ea, sed explicabo iste, repellendus unde libero quisquam fuga qui corrupti doloremque voluptas maxime? Atque.
+                    Neque tempore ad sunt ratione deserunt doloribus ullam esse rem laborum repudiandae vel impedit inventore ut, corrupti minus perspiciatis sit vero optio rerum consequuntur enim amet possimus assumenda. Minima, accusantium.
+                    Quae quam ex perspiciatis illo recusandae repellendus esse ipsam, praesentium voluptas mollitia minima quo eveniet, aspernatur et! At harum distinctio quos animi fuga quaerat pariatur doloribus eveniet. Quis, facilis ducimus.
+                    Ipsa architecto numquam excepturi reiciendis cupiditate animi, ad quidem vel suscipit mollitia maiores nemo accusantium quam officia quia dolores eligendi sunt unde nihil delectus quisquam adipisci. Porro nobis voluptatibus reiciendis.
+                    Excepturi assumenda veritatis nam hic optio harum aspernatur, quis itaque corrupti, voluptas ut autem quasi explicabo tempore natus rerum eum consequuntur asperiores sequi corporis eveniet. Recusandae tempora adipisci numquam! Quaerat.
+                    Porro odio accusantium rem saepe inventore. Laboriosam aliquid delectus sequi corporis natus provident quam placeat cum mollitia exercitationem porro illum temporibus dolore deserunt praesentium architecto beatae, accusamus ipsum, sapiente debitis.
+                    Incidunt unde sapiente iusto et odio, ex amet. Harum expedita culpa commodi voluptatibus dolorum fugiat quibusdam libero. Quaerat, provident et. Consectetur hic placeat voluptas. Molestiae magnam cum non soluta eveniet?
+                    Ad amet corrupti ex provident dolor voluptatum odio facere. Pariatur, tempora illo? Nihil atque qui tempora temporibus autem rerum eos, dolorem error repellat! Esse assumenda itaque eius ratione officiis aliquid!
+                    Doloremque nesciunt ex porro voluptate, nam sapiente deleniti recusandae ut, perferendis reprehenderit natus cum sed velit nostrum reiciendis facere minima ab ad rerum modi ullam laborum provident! Omnis, distinctio. Fugiat.
                 </p>
-
-                <h3 className="font-semibold text-4xl mb-4 h-10 w-full">Shipping</h3>
-                <p className="text-center w-1/2 h-auto my-3 ">SHIPPING POLICY
+                <h3 className="font-semibold text-2xl mb-4 mt-10 h-10 w-full">Shipping</h3>
+                <p className="text-center w-1/2 h-auto my-3 ">{/*SHIPPING POLICY
 
 
 
@@ -106,7 +114,17 @@ const Help = () => {
 
                     Shipping Cost
 
-                    Shipping cost will be determined on a case by case basis depending on the volume of the package which can be between $12,500 - $20,000COP.
+                    Shipping cost will be determined on a case by case basis depending on the volume of the package which can be between $12,500 - $20,000COP.*/}
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, eaque et aliquid sunt sed eius eveniet id iusto error iste. Sunt ad esse rerum modi odio aspernatur iure quas perferendis.
+                    Architecto corrupti ipsum magni dolorum quis aliquid provident placeat voluptatibus tempora, eum sunt. Autem sint, distinctio, totam, impedit unde molestiae repellat cupiditate id deleniti tempora vero architecto eaque quas iste.
+                    Et, autem a iste rerum quia nisi esse, modi deleniti fuga quasi, iure excepturi voluptates. Quod natus adipisci corporis vel aut totam. Voluptas maxime quidem laboriosam ab, et architecto itaque!
+                    Voluptate, quis magnam? Aliquam, quis cupiditate. Ipsam perspiciatis totam ea sunt! Voluptatum consequatur nihil iusto aspernatur quos esse consequuntur sit libero repellendus quam accusantium facilis, labore incidunt tempore cumque beatae!
+                    Nulla suscipit repellendus recusandae ad itaque voluptates error ea animi vero cupiditate, quod veniam, assumenda quae exercitationem, enim distinctio fugit cumque adipisci quasi eius porro voluptate in? Iure, accusantium deleniti!
+                    At officiis, itaque autem iure sint vel ab tempore labore est necessitatibus officia quam distinctio. Accusantium impedit possimus ratione ex necessitatibus numquam? Rem ex tenetur sunt impedit dolorem itaque? Tenetur.
+                    Assumenda autem rem illum atque numquam mollitia provident dignissimos doloremque vel, esse explicabo ducimus iusto. Id nostrum optio non, ratione voluptatem eaque voluptatum dolor quod magni voluptates, totam a sit!
+                    Sapiente, vero? In deserunt consequuntur illo eaque suscipit. Expedita dolorem aut autem fugiat. Accusamus, possimus sunt? Quidem doloribus cumque molestias voluptate officiis perferendis quibusdam delectus sapiente magni. Quo, officia distinctio?
+                    Impedit quo quibusdam quis laboriosam. Hic aut vitae perferendis officia doloribus magni illo recusandae cupiditate amet fuga! Corrupti voluptas saepe dolores, sint, nihil consequatur quidem corporis voluptatibus modi pariatur dolorem.
+                    Magnam dolores quidem ipsum magni quam sunt, ipsam, neque unde incidunt sequi autem excepturi praesentium expedita impedit quod vero officiis alias, perspiciatis ab. Facilis, exercitationem veniam. Minima quos esse quidem?
                 </p>
             </div>
         </div>

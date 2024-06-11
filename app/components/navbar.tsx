@@ -20,14 +20,14 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
     const showNav = useScrollDirection();
     return (
         <nav
-            className={`flex flex-row justify-between items-center w-screen h-20 fixed top-5 z10 px-5 md:px-5 bg-black text-white transition-transform duration-300 ${showNav ? 'transform translate-y-0' : 'transform -translate-y-full'}`}
+            className={`flex flex-row justify-between items-center w-screen h-20 fixed top-10 z-20 px-5 bg-black text-white transition-transform duration-300 ${showNav ? 'transform translate-y-0' : 'transform -translate-y-40'}`}
         >
             <section className="flex flex-row justify-start items-center w-full md:w-3/12">
                 <TbMenu2
                     className="flex flex-row h-5 w-5 md:h-7 md:w-7 cursor-pointer text-white " onClick={handleView} />
                 <span className="hidden md:flex flex-row h-full justify-center items-center text-base ml-3 font-bold">Menu</span>
             </section>
-            <section className="hidden md:flex flex-row justify-center items-center w-6/12 h-full">
+            <section className="hidden md:flex flex-row justify-center items-center w-6/12">
                 <Link href="/" className="filter grayscale">
                     <img src="/TBGLogo.webp" className="h-8 w-48" />
                 </Link>

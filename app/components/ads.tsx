@@ -30,7 +30,7 @@ const Ads = () => {
     const showAds = useScrollDirection();
 
     return (
-        <div className={`flex flex-row h-10 w-screen justify-center items-center bg-black text-white fixed  z-20 transition-transform duration-300 ${showAds ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
+        <div className={`flex flex-row h-10 w-screen justify-center items-center bg-black text-white fixed z-30 transition-transform duration-300 ${showAds ? 'transform translate-y-0' : 'transform -translate-y-10'}`}>
             <HiArrowSmLeft className="cursor-pointer h-6 w-6" onClick={handleBackward} />
             <label className="flex flex-row h-full w-1/3 justify-center items-center font-light">{ads[index]}</label>
             <HiArrowSmRight className="cursor-pointer h-6 w-6" onClick={handleForward} />
