@@ -1,25 +1,39 @@
 import React, { useState } from 'react';
+import { useFetchMailer } from '@/hooks/useMailer';
+import { useEffect } from 'react';
+import { toast } from 'sonner';
 
 const ContactUs: React.FC = () => {
+    const fetchMailer = useFetchMailer();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Formulario enviado');
+        const mail = {
+            fromEmail: email,
+            fromUser: name,
+            subject: subject,
+            message: message
+        }
+        fetchMailer.mutate(mail);
     };
-
+    useEffect(() => {
+        if (fetchMailer.isSuccess) {
+            setName("");
+            setEmail("");
+            setSubject("");
+            setMessage("");
+            toast.success(fetchMailer.data);
+        }
+    }, [fetchMailer.isSuccess]);
     return (
-        <div className="h-screen w-screen bg-black flex justify-center items-center">
-            <section className="w-2/5 h-max flex flex-col justify-start items-center pt-10 bg-white rounded-md text-black">
-
-                <h1 className="w-full h-12 flex flex-row justify-center items-start text-4xl font-bold">
+        <div className="h-auto w-screen flex flex-col justify-start text-center items-center mt-40 mb-16">
+                <h1 className="text-4xl font-bold mb-5 text-black w-full p-5">
                     Contact Us
                 </h1>
-                <form className="w-full h-auto flex flex-col justify-center items-center mb-10 pt-4" onSubmit={handleSubmit}>
-
+                <form className="flex flex-col justify-center items-center w-1/2 h-auto" onSubmit={handleSubmit}>
                     <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="name">Name:</label>
                     <input
                         className="w-3/4 h-4/5 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-4 py-5 text-black"
@@ -28,7 +42,6 @@ const ContactUs: React.FC = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
-
                     <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="email">Email:</label>
                     <input
                         className="w-3/4 h-4/5 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5 py-5 text-black"
@@ -37,8 +50,7 @@ const ContactUs: React.FC = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="message">Subject:</label>
+                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="subject">Subject:</label>
                     <input
                         className="w-3/4 h-4/5 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5 py-5 text-black"
                         type="text"
@@ -46,18 +58,15 @@ const ContactUs: React.FC = () => {
                         value={subject}
                         onChange={(e) => setSubject(e.target.value)}
                     ></input>
-
                     <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="message">Message:</label>
                     <textarea
-                        className="w-3/4 h-4/5 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5 py-5 text-black"
+                        className="w-3/4 h-44 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5 py-5 text-black resize-none"
                         id="message"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                     ></textarea>
-
                     <input className="text-xl w-60 h-14 flex flex-row justify-center items-center border-0 bg-black text-white rounded-md cursor-pointer hover:bg-white hover:text-black hover:border hover:border-black" type="submit" />
                 </form>
-            </section>
         </div>
     );
 };

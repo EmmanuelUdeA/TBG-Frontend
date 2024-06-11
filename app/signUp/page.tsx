@@ -1,6 +1,6 @@
 'use client';
 
-import Signup from "../components/signup";
+import Signup from "../components/signUp";
 
 const Page = () => {
     return (
