@@ -8,7 +8,6 @@ const ContactUs: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Aquí puedes agregar la lógica para enviar el formulario
         console.log('Formulario enviado');
     };
 

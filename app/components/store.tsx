@@ -50,7 +50,7 @@ const Store = () => {
     return (
         <div className="flex w-screen h-auto">
             <div className="flex flex-row flex-wrap w-full h-auto justify-start items-start mb-12 overflow-y-auto">
-                <h1 className="flex w-full h-12 justify-center items-center text-3xl mt-20 font-extrabold">Store</h1>
+                <h1 className="flex w-full h-12 justify-center items-start text-3xl mt-10 font-extrabold">Store</h1>
                 <section className="flex flex-col w-1/4 h-auto justify-start items-center my-20 shadow-[2px_0_2px_-2px_rgba(0,0,0,0.7)] pb-40 ">
                     <h2 className="flex flex-row w-full h-auto justify-center items-center font-bold text-xl">Filters</h2>
                     <ul className="flex flex-col justify-center items-center w-full h-auto mt-10">
