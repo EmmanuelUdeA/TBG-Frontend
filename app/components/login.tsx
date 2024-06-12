@@ -21,13 +21,15 @@ const Login = () => {
     if (login.isSuccess) {
         if (login.data.uid) {
             updateUser(login.data);
-            redirect(`/?uid=${login.data.uid}`);
+            //redirect(`/?uid=${login.data.uid}`);
+            redirect(`/`);
         }
     }
     if (loginWithGoogle.isSuccess) {
         if (loginWithGoogle.data.uid) {
             console.log(loginWithGoogle.data)
-            redirect(`/?uid=${loginWithGoogle.data.uid}`);
+            //redirect(`/?uid=${loginWithGoogle.data.uid}`);
+            redirect(`/`);
         }
     }
     const updateLandingImg = useStore(state => state.updateLandingImg);

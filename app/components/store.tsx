@@ -5,11 +5,11 @@ import { useFetchProducts, useFetchCategories, useFetchCollections, useFetchColo
 import { useEffect, useState } from "react";
 import { IoIosArrowForward, IoIosArrowDown, IoIosWarning } from "react-icons/io";
 import Pagination from "./pagination";
-import { useSearchParams } from "next/navigation";
+//import { useSearchParams } from "next/navigation";
 
 const Store = () => {
-    const searchParams = useSearchParams();
-    const uid = searchParams.get('uid');
+    //const searchParams = useSearchParams();
+    //const uid = searchParams.get('uid');
     const productsPerPage = 8;
     const [actualPage, setActualPage] = useState(0);
     const [productsLenght, setProductsLength] = useState(0);
@@ -160,7 +160,7 @@ const Store = () => {
                     {actualProducts?.map((p: any) => {
                         return (
                             <li key={p.id} className="flex flex-col w-1/5 h-auto justify-center items-center mx-8 mb-10">
-                                <Link href={"/store/product/" + p.id + (uid ? '?uid='+ uid : '')} className="w-full h-auto flex flex-col justify-center items-center ">
+                                <Link href={"/store/product/" + p.id /*+ (uid ? '?uid='+ uid : '')*/} className="w-full h-auto flex flex-col justify-center items-center ">
                                     {p.front_image ? <img src={p.front_image} alt={p.name} className="flex w-full h-96 justify-center items-center" /> :
                                         <section className="flex w-full h-96 justify-center items-center bg-gray-300">
                                             <IoIosWarning className="h-5 w-5 md:h-8 md:w-8" />
