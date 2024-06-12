@@ -5,11 +5,11 @@ import { useFetchCollections } from "@/hooks/useProducts";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+//import { useSearchParams } from "next/navigation";
 
 const Page = () => {
-    const searchParams = useSearchParams();
-    const uid = searchParams.get('uid');
+    //const searchParams = useSearchParams();
+    //const uid = searchParams.get('uid');
     let collections = useStore(store => store.collections);
     const [actualCollection, setActualCollection] = useState(0);
     const [collectionsLength, setCollectionsLength] = useState(collections ? collections.length-1 : 0);
@@ -40,7 +40,7 @@ const Page = () => {
     }
     return (
         <div className="w-screen flex flex-row h-screen bg-cover bg-no-repeat overflow-hidden justify-center items-center mt-28">
-            {collections && <Link href={"/collections/" + collections[actualCollection].id + (uid ? '?uid=' + uid : '')} className="flex w-full h-full justify-center items-center cursor-pointer flex-col flex-wrap">
+            {collections && <Link href={"/collections/" + collections[actualCollection].id /*+ (uid ? '?uid=' + uid : '')*/} className="flex w-full h-full justify-center items-center cursor-pointer flex-col flex-wrap">
                 <div className="w-1/2 h-full flex flex-col justify-center items-center bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url('/Lumen/Main/Main1-blur.jpg')` }}>
                     {<img className="w-full h-full flex flex-col justify-center items-center" alt="collection" src={collections[actualCollection].main_img} />}
                 </div>
