@@ -1,7 +1,10 @@
 import { VscClose } from "react-icons/vsc";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const Menu = ({ setViewMenu, viewMenu }) => {
+    const searchParams = useSearchParams();
+    const uid = searchParams.get('uid');
     const handleViewMenu = () => {
         setViewMenu(!viewMenu);
     }
@@ -12,17 +15,17 @@ const Menu = ({ setViewMenu, viewMenu }) => {
             </section>
             <ul className="w-full h-full justify-center items-center flex flex-col px-64 py-40">
                 <li className="h-1/4 w-full flex flex-row justify-center items-center">
-                    <Link href="/" onClick={handleViewMenu}>
+                    <Link href={`/` + (uid ? '?uid=' + uid : '')} onClick={handleViewMenu}>
                         Home
                     </Link>
                 </li>
                 <li className="h-1/4 w-full flex flex-row justify-center items-center">
-                    <Link href="/store" onClick={handleViewMenu}>
+                    <Link href={`/store` + (uid ? '?uid=' + uid : '')} onClick={handleViewMenu}>
                         Store
                     </Link>
                 </li>
                 <li className="h-1/4 w-full flex flex-row justify-center items-center">
-                    <Link href="/collections" onClick={handleViewMenu}>
+                    <Link href={`/collections` + (uid ? '?uid=' + uid : '')} onClick={handleViewMenu}>
                         Collections
                     </Link>
                 </li>
