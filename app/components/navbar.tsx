@@ -7,8 +7,12 @@ import Link from "next/link";
 import { FaUserAstronaut } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
 import useScrollDirection from "@/hooks/useScrollDirection";
+import { redirect } from "next/navigation";
+import { useLogout, useLogouWithGoogle } from "@/hooks/useAuth";
 
 const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
+    const logout = useLogout();
+    const logoutWithGoogle = useLogouWithGoogle();
     const searchParams = useSearchParams();
     const uid = searchParams.get('uid');
     const handleView = () => {
@@ -16,6 +20,18 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
     }
     const handleCart = () => {
         setViewCart(!viewCart);
+    }
+    const handleLogout = () => {
+        const typeSession = localStorage.getItem("session");
+        console.log(typeSession)
+        if (typeSession === 'email/password') {
+            logout.mutate();
+            location.reload();
+        }
+        if (typeSession === 'google') {
+            logoutWithGoogle.mutate();
+            location.reload();
+        }
     }
     const showNav = useScrollDirection();
     return (
@@ -28,7 +44,7 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
                 <span className="hidden md:flex flex-row h-full justify-center items-center text-base ml-3 font-bold">Menu</span>
             </section>
             <section className="hidden md:flex flex-row justify-center items-center w-6/12">
-                <Link href="/" className="filter grayscale">
+                <Link href={`/` + (uid ? '?uid=' + uid : '')} className="filter grayscale">
                     <img src="/TBGLogo.webp" className="h-8 w-48" />
                 </Link>
             </section>
@@ -40,7 +56,7 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
                 </form>
                 <TfiShoppingCartFull className="flex flex-row h-5 w-5 md:h-8 md:w-8 mr-5 cursor-pointer" onClick={handleCart} />
                 {uid ?
-                    <FaUserAstronaut className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" />
+                    <FaUserAstronaut className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={handleLogout} />
                     :
                     <Link href="/login">
                         <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" />

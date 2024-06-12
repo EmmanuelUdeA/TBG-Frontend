@@ -6,7 +6,7 @@ import { useFetchProducts } from "@/hooks/useProducts";
 import { toast } from "sonner";
 
 export default function Page() {
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     const [size, setSize] = useState("");
     const pathname = usePathname();
     let arrPath = pathname.split("/");
@@ -35,7 +35,7 @@ export default function Page() {
         }
     }
     const handleRemoveQuantity = () => {
-        if (quantity > 0) {
+        if (quantity > 1) {
             setQuantity(quantity - 1);
         }
     }
@@ -44,16 +44,17 @@ export default function Page() {
         setSize(newSize);
     }
     const addProductToCart = () => {
-        if (product) {
-            let productToCart = product;
-            productToCart["size"] = size;
-            productToCart["quantity"] = quantity;
+        if (product && size!=="") {
+            const productToCart = {
+                ...product,
+                size,
+                quantity
+            };
             updateCart(productToCart);
-            toast.success("The product has been added to your cart.");
         }
     }
     return (
-        <div className="flex flex-row w-screen h-screen justify-center items-center">
+        <div className="flex flex-row w-screen h-screen justify-center items-center mt-40">
             <section className="flex flex-col w-1/2 h-full justify-center items-center">
                 {product && <img className="flex flex-col justify-center items-center w-5/6 h-5/6" alt="product" src={product.front_image} />}
             </section>
