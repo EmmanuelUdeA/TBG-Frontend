@@ -58,7 +58,7 @@ export default function Page() {
         setSize(newSize);
     }
     const addProductToCart = () => {
-        if (product && size!=="") {
+        if (product && size !== "") {
             const productToCart = {
                 ...product,
                 size,
@@ -70,9 +70,9 @@ export default function Page() {
     return (
         <div className="flex flex-row w-screen h-screen justify-center items-center mt-40">
             <section className="flex flex-col w-1/2 h-full justify-center items-center">
-                <div className="flex flex-col justify-center items-center w-5/6 h-5/6 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${product.back_image})` }}>
-                {product && <img className="h-full w-full hover:opacity-0" alt="product" src={product.front_image} />}
-                </div>
+                {product && <div className="flex flex-col justify-center items-center w-5/6 h-5/6 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${product.back_image})` }}>
+                    <img className="h-full w-full hover:opacity-0" alt="product" src={product.front_image} />
+                </div>}
             </section>
             <section className="flex flex-col w-1/2 h-full justify-start items-start pl-16 mt-40">
                 <h1 className="flex flex-row justify-start items-center w-full h-auto text-3xl font-extrabold">{product ? product.name : ""}</h1>
@@ -105,10 +105,10 @@ export default function Page() {
                         <button className="h-full w-1/3 flex flex-col justify-center items-center px-5 py-4 hover:bg-gray-200 rounded-2xl" onClick={handleAddQuantity}>+</button>
                     </div>
                 </div>
-                <button className="mt-10 w-2/3 h-16 flex flex-row justify-center items-center bg-black text-white text-lg font-bold rounded-2xl" onClick={addProductToCart}>
+                <button className="mt-10 w-2/3 h-16 flex flex-row justify-center items-center bg-black text-white text-lg font-bold rounded-2xl hover:bg-white hover:text-black hover:border hover:border-black" onClick={addProductToCart}>
                     ADD TO CART
                 </button>
-                <button className="mt-5 w-2/3 h-16 flex flex-row justify-center items-center bg-black text-white text-lg font-bold rounded-2xl">
+                <button className="mt-5 w-2/3 h-16 flex flex-row justify-center items-center bg-black text-white text-lg font-bold rounded-2xl hover:bg-white hover:text-black hover:border hover:border-black">
                     BUY NOW
                 </button>
             </section>
