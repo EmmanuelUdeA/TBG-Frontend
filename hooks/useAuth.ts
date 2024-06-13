@@ -17,7 +17,7 @@ const auth = firebase.auth();
 
 async function fetchLogin(email: string, password: string) {
     const res = await server.post<LoginResponse>('/auth/signin', {
-        email: email,
+        email: email.toLowerCase(),
         password: password
     }).then((res) => {
         const data = res.data;
@@ -28,7 +28,6 @@ async function fetchLogin(email: string, password: string) {
             localStorage.setItem('session', 'email/password');
             localStorage.setItem('role', data.role);
             data.user["token"] = data.token;
-            return data.user
         }
         return data;
     }).catch((e) => {
@@ -77,13 +76,15 @@ async function fetchLoginWithGoogle() {
             email: auth.user.email
         }).then((res) => {
             const data = res.data;
-            localStorage.setItem('user', JSON.stringify(data.user));
-            localStorage.setItem('uid', uid);
-            localStorage.setItem('accessToken', token);
-            localStorage.setItem('session', 'google');
-            localStorage.setItem('role', data.role);
-            data.user["token"] = token;
-            return data.user;
+            if (data.auth) {
+                localStorage.setItem('user', JSON.stringify(data.user));
+                localStorage.setItem('uid', uid);
+                localStorage.setItem('accessToken', token);
+                localStorage.setItem('session', 'google');
+                localStorage.setItem('role', data.role);
+                data.user["token"] = token;
+            }
+            return data;
         }).catch((e) => {
             return e;
         });
@@ -122,7 +123,7 @@ async function fetchSignup(name: string, lastname: string, email: string, passwo
     const res = await server.post<LoginResponse>('/auth/signup', {
         name: name,
         lastname: lastname,
-        email: email,
+        email: email.toLowerCase(),
         password: password
     }).then((res) => {
         const data = res.data;
