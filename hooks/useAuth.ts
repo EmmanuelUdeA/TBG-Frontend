@@ -4,16 +4,23 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { LoginResponse } from "@/types/auth.type";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCmpYSfZWpgdjuI_p8F1se_5iF21pB9slg",
-    authDomain: "tripboys.firebaseapp.com",
-    projectId: "tripboys",
-    storageBucket: "tripboys.appspot.com",
-    messagingSenderId: "323603224403",
-    appId: "1:323603224403:web:e3153d631d7b699252b3a6"
-};
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+let auth = null; 
+
+async function FirebaseConnect() {
+    const serverProps = await fetch(`/api/server_props`).then((res) => res.json());
+    const firebaseConfig = {
+        apiKey: serverProps.firebaseApiKey,
+        authDomain: serverProps.firebaseAuthDomain,
+        projectId: serverProps.firebaseProjectId,
+        storageBucket: serverProps.firebaseStorageBucket,
+        messagingSenderId: serverProps.firebaseMessangingSenderId,
+        appId: serverProps.firebaseAppId
+    };
+    firebase.initializeApp(firebaseConfig);
+    auth = firebase.auth();
+}
+
+FirebaseConnect();
 
 async function fetchLogin(email: string, password: string) {
     const res = await server.post<LoginResponse>('/auth/signin', {
