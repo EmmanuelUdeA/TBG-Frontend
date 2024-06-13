@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react';
 
 
-const Gallery = ({ gallery }) => {
+const Gallery = ({ gallery, name }) => {
     const [initialImg, setInitialImg] = useState(0)
     const handleForward = () => {
         if (initialImg === gallery.length - 1) {
@@ -27,7 +27,7 @@ const Gallery = ({ gallery }) => {
                     if (initialImg < gallery.length - 3) {
                         if (index >= initialImg && index < initialImg + 3) {
                             return (
-                                <li key={index} className="scale-80 w-1/3 bg-cover bg-center h-screen blur-load" style={{ backgroundImage: `url('/Lumen/Gallery/Gallery${index + 1}-blur.jpg')` }}>
+                                <li key={index} className="scale-80 w-1/3 bg-cover bg-center h-screen blur-load" style={{ backgroundImage: `url('/${name}/Gallery/Gallery${index + 1}-blur.jpg')` }}>
                                     {gallery.length>0 && <img src={img.pathname} alt="" className="w-full h-full" loading="lazy"/>}
                                 </li>
                             )
@@ -35,7 +35,7 @@ const Gallery = ({ gallery }) => {
                     } else {
                         if (index >= initialImg) {
                             return (
-                                <li key={index} className="scale-80 w-1/3 bg-cover bg-center h-screen blur-load" style={{ backgroundImage: `url('/Lumen/Gallery/Gallery${index + 1}-blur.jpg')` }}>
+                                <li key={index} className="scale-80 w-1/3 bg-cover bg-center h-screen blur-load" style={{ backgroundImage: `url('/${name}/Gallery/Gallery${index + 1}-blur.jpg')` }}>
                                     {gallery.length>0 && <img src={img.pathname} alt="" className="w-full h-full" loading="lazy"/>}
                                 </li>
                             )
@@ -45,7 +45,7 @@ const Gallery = ({ gallery }) => {
                 {initialImg > gallery.length - 3 && gallery.map((img2: any, index2: number) => {
                     if (index2 < 3 - (gallery.length - initialImg)) {
                         return (
-                            <li key={index2} className="scale-80 w-1/3 bg-cover bg-center h-screen blur-load" style={{ backgroundImage: `url('/Lumen/Gallery/Gallery${index2 + 1}-blur.jpg')` }}>
+                            <li key={index2} className="scale-80 w-1/3 bg-cover bg-center h-screen blur-load" style={{ backgroundImage: `url('/${name}/Gallery/Gallery${index2 + 1}-blur.jpg')` }}>
                                 {gallery.length>0 && <img src={img2.pathname} alt="" className="w-full h-full" loading="lazy"/>}
                             </li>
                         )

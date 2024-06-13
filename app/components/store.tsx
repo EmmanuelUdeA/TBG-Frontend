@@ -120,7 +120,7 @@ const Store = () => {
                             {categories && categories.map((cat: any, idx: number) => {
                                 return (
                                     <li key={cat.id} className="flex flex-row w-auto h-10 cursor-pointer justify-start items-center px-16">
-                                        <input type="checkbox" className="mr-5" onChange={() => handleCheckboxChange('categories', cat.id)} checked={isChecked('categories', cat.id)}/> {cat.name}
+                                        <input type="checkbox" className="mr-5" onChange={() => handleCheckboxChange('categories', cat.id)} checked={isChecked('categories', cat.id)} /> {cat.name}
                                     </li>
                                 )
                             })}
@@ -140,7 +140,7 @@ const Store = () => {
                             {collections && collections.map((coll: any, idx: number) => {
                                 return (
                                     <li key={coll.id} className="flex flex-row w-auto h-10 cursor-pointer justify-start items-center px-16">
-                                        <input type="checkbox" className="mr-5" onChange={() => handleCheckboxChange('collections', coll.id)} checked={isChecked('collections', coll.id)}/> {coll.name}
+                                        <input type="checkbox" className="mr-5" onChange={() => handleCheckboxChange('collections', coll.id)} checked={isChecked('collections', coll.id)} /> {coll.name}
                                     </li>
                                 )
                             })}
@@ -160,7 +160,7 @@ const Store = () => {
                             {colors && colors.map((col: any, idx: number) => {
                                 return (
                                     <li key={col.id} className="flex flex-row w-auto h-10 cursor-pointer justify-start items-center px-16">
-                                        <input type="checkbox" className="mr-5" onChange={() => handleCheckboxChange('colors', col.id)} checked={isChecked('colors', col.id)}/> {col.name}
+                                        <input type="checkbox" className="mr-5" onChange={() => handleCheckboxChange('colors', col.id)} checked={isChecked('colors', col.id)} /> {col.name}
                                     </li>
                                 )
                             })}
@@ -171,11 +171,10 @@ const Store = () => {
                     {actualProducts?.map((p: any) => {
                         return (
                             <li key={p.id} className="flex flex-col w-1/5 h-auto justify-center items-center mx-8 mb-10">
-                                <Link href={"/store/product/" + p.id /*+ (uid ? '?uid='+ uid : '')*/} className="w-full h-auto flex flex-col justify-center items-center ">
-                                    {p.front_image ? <img src={p.front_image} alt={p.name} className="flex w-full h-96 justify-center items-center" /> :
-                                        <section className="flex w-full h-96 justify-center items-center bg-gray-300">
-                                            <IoIosWarning className="h-5 w-5 md:h-8 md:w-8" />
-                                        </section>}
+                                <Link href={"/store/product/" + p.id} className="w-full h-auto flex flex-col justify-center items-center ">
+                                    <div className="flex w-full h-96 justify-center items-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${p.back_image})` }}>
+                                        <img src={p.front_image} alt={p.name} className="h-full w-full hover:opacity-0"/>
+                                    </div>
                                     <p className="flex flex-row w-full justify-start items-center text-sm mt-2">Collection: {p.tbl_collection.name}</p>
                                     <section className="flex justify-between items-center w-full h-auto mt-2 text-lg">
                                         <p className="w-auto flex justify-center items-center">{p.name}</p>
