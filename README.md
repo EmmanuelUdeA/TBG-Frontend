@@ -6,16 +6,19 @@ Creado con Next.js, React y Tailwind CSS.
 
 ## Requisitos
 
-- Node.js (versión 14 o superior)  
+- Node >= 18.0.0  
   [Sitio para descargar Node.js](https://nodejs.org/en/download/package-manager)
+
+- Git >= 2.0.0
+  [Sitio para descargar Git](https://git-scm.com/downloads)
 
 ## Instrucciones para ejecutar el proyecto
 
-Sigue los siguientes pasos para clonar y ejecutar el proyecto en tu entorno local.
+Sigue los siguientes pasos para clonar y ejecutar el proyecto en tu entorno local (Asegurate de ejecutar el backend de tbg primero).
 
 ### 1. Clonar el repositorio
 
-Primero, clona el repositorio en tu máquina local usando Git.
+Primero, clona el repositorio en tu máquina local usando Git. Abre una terminal, navega hasta el directorio donde quieres alojar el proyecto (por ejemplo, Documents) y ejecuta:
 
 ```bash
 git clone https://github.com/EmmanuelUdeA/TBG-Frontend.git
@@ -44,5 +47,9 @@ Después de instalar las dependencias, puedes ejecutar el proyecto en modo desar
 ```bash
 npm run dev
 ```
+
+### 5. Abrir la app
+
+Después de eejcutar el proyecto, navega hasta la dirección URL donde se está ejecutando (En la mayoria de casos: "http://localhost:3001").
 
 ---
