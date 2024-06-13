@@ -11,9 +11,7 @@ import { useRouter } from "next/navigation";
 import { useStore } from "@/store/useStore";
 import { useEffect } from "react";
 
-const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
-    const logout = useLogout();
-    const logoutWithGoogle = useLogouWithGoogle();
+const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart, viewLoginBox, setViewLoginBox }) => {
     const showNav = useScrollDirection();
     const router = useRouter();
     const user = useStore((state) => state.user);
@@ -30,27 +28,14 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
             updateUser(user);
         }
     }, [user]);
-    useEffect(() => {
-        if(logout.isSuccess || logoutWithGoogle.isSuccess){
-            updateUser(null);
-            router.push('/'); 
-        }
-    }, [logout.isSuccess, logoutWithGoogle.isSuccess])
     const handleView = () => {
         setViewMenu(!viewMenu);
     }
     const handleCart = () => {
         setViewCart(!viewCart);
     }
-    const handleLogout = () => {
-        const typeSession = localStorage.getItem("session");
-        console.log(typeSession)
-        if (typeSession === 'email/password') {
-            logout.mutate();
-        }
-        if (typeSession === 'google') {
-            logoutWithGoogle.mutate();
-        }
+    const handleLoginBox = () => {
+        setViewLoginBox(!viewLoginBox);
     }
     return (
         <nav
@@ -75,11 +60,9 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
                 <TfiShoppingCartFull className="flex flex-row h-5 w-5 md:h-8 md:w-8 cursor-pointer" onClick={handleCart} />
                 <h1 className="flex flex-row text-xl font-bold md:h-auto md:w-auto mr-5 cursor-pointer">{cartProducts ? cartProducts.length : 0}</h1>
                 {user ?
-                    <FaUserAstronaut className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={handleLogout} />
+                    <FaUserAstronaut className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={handleLoginBox} />
                     :
-                    <Link href="/login">
-                        <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" />
-                    </Link>}
+                    <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={handleLoginBox} />}
             </section>
         </nav>
     )
