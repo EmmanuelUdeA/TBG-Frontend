@@ -1,10 +1,7 @@
 import { VscClose } from "react-icons/vsc";
 import Link from "next/link";
-//import { useSearchParams } from "next/navigation";
 
 const Menu = ({ setViewMenu, viewMenu }) => {
-    //const searchParams = useSearchParams();
-    //const uid = searchParams.get('uid');
     const handleViewMenu = () => {
         setViewMenu(!viewMenu);
     }
