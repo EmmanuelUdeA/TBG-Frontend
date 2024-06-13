@@ -37,6 +37,7 @@ const Login = () => {
         if (login.isSuccess) {
             if (login.data.auth) {
                 updateUser(login.data.user);
+                toast.success("Login was successful.");
                 redirect(`/`);
             } else {
                 toast.error(login.data.error);
@@ -45,6 +46,7 @@ const Login = () => {
         if (loginWithGoogle.isSuccess) {
             if (loginWithGoogle.data.auth) {
                 updateUser(loginWithGoogle.data.user);
+                toast.success("Login was successful.");
                 redirect(`/`);
             } else {
                 toast.error("Error while logging in.");
