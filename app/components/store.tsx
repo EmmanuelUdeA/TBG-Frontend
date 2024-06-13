@@ -5,11 +5,11 @@ import { useFetchProducts, useFetchCategories, useFetchCollections, useFetchColo
 import { useEffect, useState } from "react";
 import { IoIosArrowForward, IoIosArrowDown, IoIosWarning } from "react-icons/io";
 import Pagination from "./pagination";
-//import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Store = () => {
-    //const searchParams = useSearchParams();
-    //const uid = searchParams.get('uid');
+    const router = useRouter();
+    const user = useStore((state) => state.user);
     const productsPerPage = 8;
     const [actualPage, setActualPage] = useState(0);
     const [productsLenght, setProductsLength] = useState(0);
@@ -18,6 +18,7 @@ const Store = () => {
     const updateColors = useStore(state => state.updateColors);
     const updateCategories = useStore(store => store.updateCategories);
     const updateFilters = useStore(state => state.updateFilters);
+    const updateUser = useStore(state => state.updateUser);
     let products = useStore(store => store.filteredProducts);
     let collections = useStore(store => store.collections);
     let colors = useStore(store => store.colors);
@@ -31,7 +32,17 @@ const Store = () => {
     const [viewColors, setViewColors] = useState(false);
     const [viewCollections, setViewCollections] = useState(false);
     const [actualProducts, setActualProducts] = useState(products ? products.slice(productsPerPage * actualPage, (productsPerPage * actualPage) + productsPerPage) : null);
-    console.log(actualProducts);
+    useEffect(() => {
+        if (user) {
+            router.push(`?uid=${user.uid}`);
+        } else if (localStorage.getItem("uid") !== null) {
+            router.push(`?uid=${localStorage.getItem("uid")}`);
+            let user = JSON.parse(localStorage.getItem("user"));
+            let token = localStorage.getItem("accessToken");
+            user["token"] = token;
+            updateUser(user);
+        }
+    }, [user]);
     useEffect(() => {
         if (!products) {
             fetchProducts.mutate();

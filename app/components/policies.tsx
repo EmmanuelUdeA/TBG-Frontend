@@ -1,4 +1,23 @@
+"use client";
+import { useRouter } from "next/navigation";
+import { useStore } from "@/store/useStore";
+import { useEffect } from "react";
+
 const Policies = () => {
+    const router = useRouter();
+    const user = useStore((state) => state.user);
+    const updateUser = useStore(state => state.updateUser);
+    useEffect(() => {
+        if (user) {
+            router.push(`?uid=${user.uid}`);
+        } else if (localStorage.getItem("uid") !== null) {
+            router.push(`?uid=${localStorage.getItem("uid")}`);
+            let user = JSON.parse(localStorage.getItem("user"));
+            let token = localStorage.getItem("accessToken");
+            user["token"] = token;
+            updateUser(user);
+        }
+    }, [user]);
     return (
         <div className="justify-start w-screen flex-col items-center h-auto text-center mt-40 mb-16">
             <h2 className="text-4xl font-bold mb-5 text-black w-full p-5">Privacy Policies</h2>

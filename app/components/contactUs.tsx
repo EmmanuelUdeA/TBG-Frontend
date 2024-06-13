@@ -1,6 +1,9 @@
+"use client";
+import { useRouter } from "next/navigation";
+import { useStore } from "@/store/useStore";
+import { useEffect } from "react";
 import React, { useState } from 'react';
 import { useFetchMailer } from '@/hooks/useMailer';
-import { useEffect } from 'react';
 import { toast } from 'sonner';
 
 const ContactUs: React.FC = () => {
@@ -9,6 +12,20 @@ const ContactUs: React.FC = () => {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
+    const router = useRouter();
+    const user = useStore((state) => state.user);
+    const updateUser = useStore(state => state.updateUser);
+    useEffect(() => {
+        if (user) {
+            router.push(`?uid=${user.uid}`);
+        } else if (localStorage.getItem("uid") !== null) {
+            router.push(`?uid=${localStorage.getItem("uid")}`);
+            let user = JSON.parse(localStorage.getItem("user"));
+            let token = localStorage.getItem("accessToken");
+            user["token"] = token;
+            updateUser(user);
+        }
+    }, [user]);
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const mail = {

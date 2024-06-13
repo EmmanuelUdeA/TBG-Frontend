@@ -3,9 +3,11 @@ import { usePathname } from "next/navigation";
 import { useStore } from "@/store/useStore";
 import { useEffect, useState } from "react";
 import { useFetchProducts } from "@/hooks/useProducts";
-import { toast } from "sonner";
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
+    const router = useRouter();
+    const user = useStore((state) => state.user);
     const [quantity, setQuantity] = useState(1);
     const [size, setSize] = useState("");
     const pathname = usePathname();
@@ -13,9 +15,21 @@ export default function Page() {
     let id = parseInt(arrPath[arrPath.length - 1]);
     const updateCart = useStore(store => store.updateCart);
     const updateProducts = useStore(state => state.updateProducts);
+    const updateUser = useStore(state => state.updateUser);
     const fetchProducts = useFetchProducts();
     let getProduct = useStore(state => state.getProduct);
     const [product, setProduct] = useState(getProduct(id));
+    useEffect(() => {
+        if (user) {
+            router.push(`?uid=${user.uid}`);
+        } else if (localStorage.getItem("uid") !== null) {
+            router.push(`?uid=${localStorage.getItem("uid")}`);
+            let user = JSON.parse(localStorage.getItem("user"));
+            let token = localStorage.getItem("accessToken");
+            user["token"] = token;
+            updateUser(user);
+        }
+    }, [user]);
     useEffect(() => {
         if (!product) {
             fetchProducts.mutate();

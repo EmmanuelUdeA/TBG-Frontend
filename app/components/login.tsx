@@ -6,11 +6,26 @@ import { useStore } from "@/store/useStore";
 import { useFetchLandingImg } from "@/hooks/useLanding";
 import { useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+    const router = useRouter();
+    const user = useStore((state) => state.user);
     const updateUser = useStore(state => state.updateUser);
     const login = useLogin();
     const loginWithGoogle = useLoginWithGoogle();
+    useEffect(() => {
+        if (user) {
+            router.push('/'); 
+        } else if (localStorage.getItem("uid") !== null) {
+            router.push(`?uid=${localStorage.getItem("uid")}`);
+            let user = JSON.parse(localStorage.getItem("user"));
+            let token = localStorage.getItem("accessToken");
+            user["token"] = token;
+            updateUser(user);
+        }
+    }, [user]);
     const handleSubmit = (formData) => {
         const user = {
             email: formData.get("email"),
@@ -18,20 +33,24 @@ const Login = () => {
         }
         login.mutate(user);
     }
-    if (login.isSuccess) {
-        if (login.data.uid) {
-            updateUser(login.data);
-            //redirect(`/?uid=${login.data.uid}`);
-            redirect(`/`);
+    useEffect(() => {
+        if (login.isSuccess) {
+            if (login.data.auth) {
+                updateUser(login.data.user);
+                redirect(`/`);
+            } else {
+                toast.error(login.data.error);
+            }
         }
-    }
-    if (loginWithGoogle.isSuccess) {
-        if (loginWithGoogle.data.uid) {
-            console.log(loginWithGoogle.data)
-            //redirect(`/?uid=${loginWithGoogle.data.uid}`);
-            redirect(`/`);
+        if (loginWithGoogle.isSuccess) {
+            if (loginWithGoogle.data.auth) {
+                updateUser(loginWithGoogle.data.user);
+                redirect(`/`);
+            } else {
+                toast.error("Error while logging in.");
+            }
         }
-    }
+    }, [login.isSuccess, loginWithGoogle.isSuccess]);
     const updateLandingImg = useStore(state => state.updateLandingImg);
     const fetchLandingImg = useFetchLandingImg();
     let landingImg = useStore(state => state.landingImg);
