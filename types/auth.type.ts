@@ -8,6 +8,10 @@ export interface User {
     address: number
     uid: string
     token: string
+    tbl_email: {
+        id: number
+        email: string
+    }
 }
 
 export interface LoginResponse {

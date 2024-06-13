@@ -34,9 +34,9 @@ const CartShop = ({ viewCart, setViewCart }) => {
                     <h1 className="font-bold text-black ml-5"> Cart Shop </h1>
                     <VscClose className="cursor-pointer mr-8 text-black justify-center items-center" size={30} onClick={handleViewMenu} />
                 </section>
-                <ul className="w-full h-auto flex flex-col justify-center items-start overflow-y-visible overflow-x-hidden pt-10 ">
-                    {cartProducts && cartProducts.map((product, index) => (
-                        <li className="w-full h-auto flex flex-row justify-start items-center text-black my-4 ml-8" key={index}>
+                <ul className="w-full h-auto flex-1 flex-col justify-center items-start overflow-y-visible overflow-x-hidden mt-10">
+                    {cartProducts?.map((product) => (
+                        <li className="w-full h-auto flex flex-row justify-start items-center text-black my-4 ml-8" key={product.id}>
                             <img className="w-32 h-40 " src={product.front_image} alt={product.name} />
                             <section className="w-auto h-full flex flex-col justify-between items-start p-6 ">
                                 <h1 className="h-4 w-auto flex flex-row text-sm">{product.name}</h1>
@@ -44,11 +44,11 @@ const CartShop = ({ viewCart, setViewCart }) => {
                                 <p className="h-4 w-auto flex flex-row text-xs">{product.size}</p>
                                 <section className="flex flex-row w-full h-10 justify-between items-center">
                                     <div className="flex flex-row h-10 w-24 justify-between items-center rounded-xl bg-gray-200 mr-20 ">
-                                        <button className="text-base w-1/3 flex justify-center items-center" onClick={() => removeProductQuantity(product.id)}>-</button>
+                                        <button className="text-base w-1/3 flex justify-center items-center" onClick={() => removeProductQuantity(product.id, product.size)}>-</button>
                                         <span className="text-base">{product.quantity}</span>
-                                        <button className="text-base w-1/3 flex justify-center items-center" onClick={() => addProductQuantity(product.id)}>+</button>
+                                        <button className="text-base w-1/3 flex justify-center items-center" onClick={() => addProductQuantity(product.id, product.size)}>+</button>
                                     </div>
-                                    <GoTrash className="cursor-puntor" onClick={() => removeCartProduct(product.id)} />
+                                    <GoTrash className="cursor-puntor" onClick={() => removeCartProduct(product.id, product.size)} />
                                 </section>
                             </section>
                         </li>

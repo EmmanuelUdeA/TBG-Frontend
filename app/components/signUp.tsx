@@ -7,10 +7,15 @@ import { useFetchLandingImg } from "@/hooks/useLanding";
 import { useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useLoginWithGoogle } from "@/hooks/useAuth";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
+    const router = useRouter();
     const signup = useSignup();
     const loginWithGoogle = useLoginWithGoogle();
+    const user = useStore((state) => state.user);
+    const updateUser = useStore(state => state.updateUser);
     const handleSubmit = (formData) => {
         const user = {
             name: formData.get("name"),
@@ -20,9 +25,27 @@ const Signup = () => {
         }
         signup.mutate(user);
     }
-    if (signup.isSuccess) {
-        redirect("/login");
-    }
+    useEffect(() => {
+        if (user) {
+            router.push('/'); 
+        } else if (localStorage.getItem("uid") !== null) {
+            router.push(`?uid=${localStorage.getItem("uid")}`);
+            let user = JSON.parse(localStorage.getItem("user"));
+            let token = localStorage.getItem("accessToken");
+            user["token"] = token;
+            updateUser(user);
+        }
+    }, [user]);
+    useEffect(() => {
+        if (signup.isSuccess) {
+            if (signup.data.auth) {
+                toast.success("The user has been created.");
+                redirect("/login");
+            } else {
+                toast.error(signup.data.error);
+            }
+        }
+    }, [signup.isSuccess]);
     const updateLandingImg = useStore(state => state.updateLandingImg);
     const fetchLandingImg = useFetchLandingImg();
     let landingImg = useStore(state => state.landingImg);
@@ -39,7 +62,7 @@ const Signup = () => {
     }, [fetchLandingImg.isSuccess])
     return (
         <div className="bg-[url('/Landing/Landing1-blur.jpg')] bg-cover bg-center w-screen h-screen blur-load flex justify-center items-center">
-            <section className="w-1/3 h-auto max-h-full flex flex-col justify-center items-center bg-white rounded-md z-50 absolute py-10">
+            <section className="w-1/3  h-auto max-h-full flex flex-col justify-center items-center bg-white rounded-md z-10 absolute mt-32 py-6">
                 <h1 className="w-full h-12 flex flex-row justify-center items-end text-4xl">
                     Signup
                 </h1>

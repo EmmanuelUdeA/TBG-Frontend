@@ -29,3 +29,9 @@ export interface Category {
     id: number
     name: string
 }
+
+export interface Color {
+    id: number
+    name: string
+    hex?: string
+}

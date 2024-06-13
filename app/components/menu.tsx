@@ -12,17 +12,26 @@ const Menu = ({ setViewMenu, viewMenu }) => {
             </section>
             <ul className="w-full h-full justify-center items-center flex flex-col px-64 py-40">
                 <li className="h-1/4 w-full flex flex-row justify-center items-center">
-                    <Link href="/" onClick={handleViewMenu}>
+                    {/*<Link href={`/` + (uid ? '?uid=' + uid : '')} onClick={handleViewMenu}>
+                        Home
+                    </Link>*/}
+                    <Link href={`/`} onClick={handleViewMenu}>
                         Home
                     </Link>
                 </li>
                 <li className="h-1/4 w-full flex flex-row justify-center items-center">
-                    <Link href="/store" onClick={handleViewMenu}>
+                    {/*<Link href={`/store` + (uid ? '?uid=' + uid : '')} onClick={handleViewMenu}>
+                        Store
+                    </Link>*/}
+                    <Link href={`/store`} onClick={handleViewMenu}>
                         Store
                     </Link>
                 </li>
                 <li className="h-1/4 w-full flex flex-row justify-center items-center">
-                    <Link href="/collections" onClick={handleViewMenu}>
+                    {/*<Link href={`/collections` + (uid ? '?uid=' + uid : '')} onClick={handleViewMenu}>
+                        Collections
+                    </Link>*/}
+                    <Link href={`/collections`} onClick={handleViewMenu}>
                         Collections
                     </Link>
                 </li>

@@ -5,45 +5,67 @@ import { TfiShoppingCartFull } from "react-icons/tfi";
 import { RiContactsLine } from "react-icons/ri";
 import Link from "next/link";
 import { FaUserAstronaut } from "react-icons/fa";
-import { useSearchParams } from "next/navigation";
+import useScrollDirection from "@/hooks/useScrollDirection";
+import { useLogout, useLogouWithGoogle } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
+import { useStore } from "@/store/useStore";
+import { useEffect } from "react";
 
-const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
-    const searchParams = useSearchParams();
-    const uid = searchParams.get('uid');
+const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart, viewLoginBox, setViewLoginBox }) => {
+    const showNav = useScrollDirection();
+    const router = useRouter();
+    const user = useStore((state) => state.user);
+    const updateUser = useStore(state => state.updateUser);
+    const cartProducts = useStore(state => state.cart);
+    useEffect(() => {
+        if (user) {
+            router.push(`?uid=${user.uid}`);
+        } else if (localStorage.getItem("uid") !== null) {
+            router.push(`?uid=${localStorage.getItem("uid")}`);
+            let user = JSON.parse(localStorage.getItem("user"));
+            let token = localStorage.getItem("accessToken");
+            user["token"] = token;
+            updateUser(user);
+        }
+    }, [user]);
     const handleView = () => {
         setViewMenu(!viewMenu);
     }
     const handleCart = () => {
         setViewCart(!viewCart);
     }
+    const handleLoginBox = () => {
+        setViewLoginBox(!viewLoginBox);
+    }
     return (
-        <nav className={`flex flex-row justify-between items-center w-screen h-20 top-0 z-10 px-5 md:scroll-px-5 bg-black text-white`}>
+        <nav
+            className={`flex flex-row justify-between items-center w-screen h-20 fixed top-10 z-20 px-5 bg-black text-white transition-transform duration-300 ${showNav ? 'transform translate-y-0' : 'transform -translate-y-40'}`}
+        >
             <section className="flex flex-row justify-start items-center w-full md:w-3/12">
                 <TbMenu2
                     className="flex flex-row h-5 w-5 md:h-7 md:w-7 cursor-pointer text-white " onClick={handleView} />
-                <label className="hidden md:flex flex-row h-full justify-center items-center text-base ml-3 font-bold">Menu</label>
+                <span className="hidden md:flex flex-row h-full justify-center items-center text-base ml-3 font-bold">Menu</span>
             </section>
-            <section className="hidden md:flex flex-row justify-center items-center w-6/12 h-full">
-                <Link href="/" className="filter grayscale">
+            <section className="hidden md:flex flex-row justify-center items-center w-6/12">
+                <Link href={`/`} className="filter grayscale">
                     <img src="/TBGLogo.webp" className="h-8 w-48" />
                 </Link>
             </section>
             <section className="flex flex-row justify-end items-center w-full md:w-3/12 pr-5">
                 <form className="relative w-auto mr-5 h-10">
                     <input type="search"
-                        className=" relative z-10 h-10 rounded-full border bg-transparent outline-none w-56 cursor-tex pl-10 pr-3" />
+                        className="relative z-10 h-10 rounded-full border bg-transparent outline-none w-56 cursor-tex pl-10 pr-3" />
                     <BiSearchAlt className="absolute inset-y-0 h-8 w-8 border-r border-transparent my-auto ml-2" />
                 </form>
-                <TfiShoppingCartFull className=" flex flex-row h-5 w-5 md:h-8 md:w-8 mr-5 cursor-pointer " onClick={handleCart} />
-                {uid ?
-                    <FaUserAstronaut className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" />
+                <TfiShoppingCartFull className="flex flex-row h-5 w-5 md:h-8 md:w-8 cursor-pointer" onClick={handleCart} />
+                <h1 className="flex flex-row text-xl font-bold md:h-auto md:w-auto mr-5 cursor-pointer">{cartProducts ? cartProducts.length : 0}</h1>
+                {user ?
+                    <FaUserAstronaut className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={handleLoginBox} />
                     :
-                    <Link href="/login">
-                        <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" />
-                    </Link>}
+                    <RiContactsLine className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={handleLoginBox} />}
             </section>
         </nav>
     )
 }
 
-export default Navbar
+export default Navbar;

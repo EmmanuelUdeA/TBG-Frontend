@@ -1,8 +1,8 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import server from "../server/tbg-server";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import { LoginResponse, User } from "@/types/auth.type";
+import { LoginResponse } from "@/types/auth.type";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCmpYSfZWpgdjuI_p8F1se_5iF21pB9slg",
@@ -17,7 +17,7 @@ const auth = firebase.auth();
 
 async function fetchLogin(email: string, password: string) {
     const res = await server.post<LoginResponse>('/auth/signin', {
-        email: email,
+        email: email.toLowerCase(),
         password: password
     }).then((res) => {
         const data = res.data;
@@ -28,7 +28,6 @@ async function fetchLogin(email: string, password: string) {
             localStorage.setItem('session', 'email/password');
             localStorage.setItem('role', data.role);
             data.user["token"] = data.token;
-            return data.user
         }
         return data;
     }).catch((e) => {
@@ -77,18 +76,20 @@ async function fetchLoginWithGoogle() {
             email: auth.user.email
         }).then((res) => {
             const data = res.data;
-            localStorage.setItem('user', JSON.stringify(data.user));
-            localStorage.setItem('uid', uid);
-            localStorage.setItem('accessToken', token);
-            localStorage.setItem('session', 'google');
-            localStorage.setItem('role', data.role);
-            data.user["token"] = token;
-            return data.user;
-        }).catch((e)=>{
+            if (data.auth) {
+                localStorage.setItem('user', JSON.stringify(data.user));
+                localStorage.setItem('uid', uid);
+                localStorage.setItem('accessToken', token);
+                localStorage.setItem('session', 'google');
+                localStorage.setItem('role', data.role);
+                data.user["token"] = token;
+            }
+            return data;
+        }).catch((e) => {
             return e;
         });
         return res;
-    }).catch((e)=>{
+    }).catch((e) => {
         return e;
     });
     return res;
@@ -118,11 +119,11 @@ export const useLogouWithGoogle = () => {
     })
 }
 
-async function fetchSignup(name:string, lastname: string, email: string, password: string) {
+async function fetchSignup(name: string, lastname: string, email: string, password: string) {
     const res = await server.post<LoginResponse>('/auth/signup', {
         name: name,
         lastname: lastname,
-        email: email,
+        email: email.toLowerCase(),
         password: password
     }).then((res) => {
         const data = res.data;

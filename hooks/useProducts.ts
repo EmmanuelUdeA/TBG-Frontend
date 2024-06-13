@@ -1,6 +1,6 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import server from "../server/tbg-server";
-import { Product, Collection, Category } from "@/types/product.type";
+import { Product, Collection, Category, Color } from "@/types/product.type";
 
 async function fetchProducts() {
     const { data } = await server.get<Product[]>('/product/products');
@@ -21,6 +21,17 @@ async function fetchCollections() {
 export function useFetchCollections() {
     return useMutation({
         mutationFn: fetchCollections
+    })
+}
+
+async function fetchColors() {
+    const { data } = await server.get<Color[]>('/product/colors');
+    return data;
+}
+
+export function useFetchColors() {
+    return useMutation({
+        mutationFn: fetchColors
     })
 }
 

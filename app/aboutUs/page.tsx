@@ -2,6 +2,7 @@
 import AboutUs from "../components/aboutUs";
 
 const Page = () => {
+    
     return (
         <AboutUs />
     )

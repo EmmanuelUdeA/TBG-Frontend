@@ -6,11 +6,26 @@ import { useStore } from "@/store/useStore";
 import { useFetchLandingImg } from "@/hooks/useLanding";
 import { useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+    const router = useRouter();
+    const user = useStore((state) => state.user);
     const updateUser = useStore(state => state.updateUser);
     const login = useLogin();
     const loginWithGoogle = useLoginWithGoogle();
+    useEffect(() => {
+        if (user) {
+            router.push('/'); 
+        } else if (localStorage.getItem("uid") !== null) {
+            router.push(`?uid=${localStorage.getItem("uid")}`);
+            let user = JSON.parse(localStorage.getItem("user"));
+            let token = localStorage.getItem("accessToken");
+            user["token"] = token;
+            updateUser(user);
+        }
+    }, [user]);
     const handleSubmit = (formData) => {
         const user = {
             email: formData.get("email"),
@@ -18,18 +33,26 @@ const Login = () => {
         }
         login.mutate(user);
     }
-    if (login.isSuccess) {
-        if (login.data.uid) {
-            updateUser(login.data);
-            redirect(`/?uid=${login.data.uid}`);
+    useEffect(() => {
+        if (login.isSuccess) {
+            if (login.data.auth) {
+                updateUser(login.data.user);
+                toast.success("Login was successful.");
+                redirect(`/`);
+            } else {
+                toast.error(login.data.error);
+            }
         }
-    }
-    if (loginWithGoogle.isSuccess) {
-        if (loginWithGoogle.data.uid) {
-            console.log(loginWithGoogle.data)
-            redirect(`/?uid=${loginWithGoogle.data.uid}`);
+        if (loginWithGoogle.isSuccess) {
+            if (loginWithGoogle.data.auth) {
+                updateUser(loginWithGoogle.data.user);
+                toast.success("Login was successful.");
+                redirect(`/`);
+            } else {
+                toast.error("Error while logging in.");
+            }
         }
-    }
+    }, [login.isSuccess, loginWithGoogle.isSuccess]);
     const updateLandingImg = useStore(state => state.updateLandingImg);
     const fetchLandingImg = useFetchLandingImg();
     let landingImg = useStore(state => state.landingImg);
@@ -46,7 +69,7 @@ const Login = () => {
     }, [fetchLandingImg.isSuccess])
     return (
         <div className="bg-[url('/Landing/Landing1-blur.jpg')] bg-cover bg-center w-screen h-screen blur-load flex justify-center items-center">
-            <section className="w-1/3 h-4/6 flex flex-col justify-center items-center bg-white rounded-md z-50 absolute">
+            <section className="w-1/3 h-4/6 flex flex-col justify-center items-center bg-white rounded-md z-10 absolute mt-20">
                 <h1 className="w-full h-12 flex flex-row justify-center items-end text-4xl">
                     Login
                 </h1>
@@ -65,7 +88,7 @@ const Login = () => {
                     <Link className="ml-4 text-sky-500" href="/signup">Create account</Link>
                 </p>
                 <button onClick={() => loginWithGoogle.mutate()} className="flex flex-row justify-center items-center py-2 px-8 border border-gray-400 bg-white rounded-lg">
-                    <FcGoogle className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center mr-2"/>
+                    <FcGoogle className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center mr-2" />
                     <span>Continue with Google</span>
                 </button>
             </section>

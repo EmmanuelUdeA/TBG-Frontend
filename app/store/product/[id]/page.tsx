@@ -3,19 +3,33 @@ import { usePathname } from "next/navigation";
 import { useStore } from "@/store/useStore";
 import { useEffect, useState } from "react";
 import { useFetchProducts } from "@/hooks/useProducts";
-import { toast } from "sonner";
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
-    const [quantity, setQuantity] = useState(0);
+    const router = useRouter();
+    const user = useStore((state) => state.user);
+    const [quantity, setQuantity] = useState(1);
     const [size, setSize] = useState("");
     const pathname = usePathname();
     let arrPath = pathname.split("/");
-    let id = parseInt(arrPath[arrPath.length-1]);
+    let id = parseInt(arrPath[arrPath.length - 1]);
     const updateCart = useStore(store => store.updateCart);
     const updateProducts = useStore(state => state.updateProducts);
+    const updateUser = useStore(state => state.updateUser);
     const fetchProducts = useFetchProducts();
     let getProduct = useStore(state => state.getProduct);
     const [product, setProduct] = useState(getProduct(id));
+    useEffect(() => {
+        if (user) {
+            router.push(`?uid=${user.uid}`);
+        } else if (localStorage.getItem("uid") !== null) {
+            router.push(`?uid=${localStorage.getItem("uid")}`);
+            let user = JSON.parse(localStorage.getItem("user"));
+            let token = localStorage.getItem("accessToken");
+            user["token"] = token;
+            updateUser(user);
+        }
+    }, [user]);
     useEffect(() => {
         if (!product) {
             fetchProducts.mutate();
@@ -30,13 +44,13 @@ export default function Page() {
         }
     }, [fetchProducts.isSuccess]);
     const handleAddQuantity = () => {
-        if(quantity<5){
-            setQuantity(quantity+1);
+        if (quantity < 5) {
+            setQuantity(quantity + 1);
         }
     }
     const handleRemoveQuantity = () => {
-        if(quantity>0){
-            setQuantity(quantity-1);
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
         }
     }
     const handleSize = (e: any) => {
@@ -44,34 +58,47 @@ export default function Page() {
         setSize(newSize);
     }
     const addProductToCart = () => {
-        if(product){
-            let productToCart = product;
-            productToCart["size"] = size;
-            productToCart["quantity"] = quantity;
+        if (product && size!=="") {
+            const productToCart = {
+                ...product,
+                size,
+                quantity
+            };
             updateCart(productToCart);
-            toast.success("The product has been added to your cart.");
         }
     }
     return (
-        <div className="flex flex-row w-screen h-screen justify-center items-center">
+        <div className="flex flex-row w-screen h-screen justify-center items-center mt-40">
             <section className="flex flex-col w-1/2 h-full justify-center items-center">
-                {product && <img className="flex flex-col justify-center items-center w-5/6 h-5/6" alt="product" src={product.front_image}/>}
+                <div className="flex flex-col justify-center items-center w-5/6 h-5/6 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${product.back_image})` }}>
+                {product && <img className="h-full w-full hover:opacity-0" alt="product" src={product.front_image} />}
+                </div>
             </section>
             <section className="flex flex-col w-1/2 h-full justify-start items-start pl-16 mt-40">
                 <h1 className="flex flex-row justify-start items-center w-full h-auto text-3xl font-extrabold">{product ? product.name : ""}</h1>
                 <h2 className="flex flex-row justify-start items-center w-full h-auto text-xl mt-5">${product ? product.price : ""}</h2>
                 <div className="flex flex-col justify-center items-start w-full h-auto mt-10">
-                    <label className="flex flex-row justify-start items-center w-full h-auto text-lg">Sizes: </label>
+                    <span className="flex flex-row justify-start items-center w-full h-auto text-lg">Sizes: </span>
                     <ul className="flex flex-row justify-start items-center w-full h-auto mt-3">
-                        <li className={size === "S" ? "mr-3 border rounded-2xl px-5 py-4 cursor-pointer bg-gray-200" : "mr-3 border rounded-2xl px-5 py-4 cursor-pointer"} value="S" onClick={(e) => handleSize(e)}>S</li>
-                        <li className={size === "M" ? "mr-3 border rounded-2xl px-5 py-4 cursor-pointer bg-gray-200" : "mr-3 border rounded-2xl px-5 py-4 cursor-pointer"} value="M" onClick={(e) => handleSize(e)}>M</li>
-                        <li className={size === "L" ? "mr-3 border rounded-2xl px-5 py-4 cursor-pointer bg-gray-200" : "mr-3 border rounded-2xl px-5 py-4 cursor-pointer"} value="L" onClick={(e) => handleSize(e)}>L</li>
-                        <li className={size === "XL" ? "mr-3 border rounded-2xl px-5 py-4 cursor-pointer bg-gray-200" : "mr-3 border rounded-2xl px-5 py-4 cursor-pointer"} value="XL" onClick={(e) => handleSize(e)}>XL</li>
-                        <li className={size === "XXL" ? "mr-3 border rounded-2xl px-5 py-4 cursor-pointer bg-gray-200" : "mr-3 border rounded-2xl px-5 py-4 cursor-pointer"} value="XXL" onClick={(e) => handleSize(e)}>XXL</li>
+                        <li className={size === "S" ? "mr-3 border rounded-2xl px-5 py-4 bg-gray-200" : "mr-3 border rounded-2xl px-5 py-4"} onClick={(e) => handleSize(e)} value="S">
+                            <button className="cursor-pointer" value="S">S</button>
+                        </li>
+                        <li className={size === "M" ? "mr-3 border rounded-2xl px-5 py-4 bg-gray-200" : "mr-3 border rounded-2xl px-5 py-4"} onClick={(e) => handleSize(e)} value="M">
+                            <button className="cursor-pointer" value="M">M</button>
+                        </li>
+                        <li className={size === "L" ? "mr-3 border rounded-2xl px-5 py-4 bg-gray-200" : "mr-3 border rounded-2xl px-5 py-4"} onClick={(e) => handleSize(e)} value="L">
+                            <button className="cursor-pointer" value="L">L</button>
+                        </li>
+                        <li className={size === "XL" ? "mr-3 border rounded-2xl px-5 py-4 bg-gray-200" : "mr-3 border rounded-2xl px-5 py-4"} onClick={(e) => handleSize(e)} value="XL">
+                            <button className="cursor-pointer" value="XL">XL</button>
+                        </li>
+                        <li className={size === "XXL" ? "mr-3 border rounded-2xl px-5 py-4 bg-gray-200" : "mr-3 border rounded-2xl px-5 py-4"} onClick={(e) => handleSize(e)} value="XXL">
+                            <button className="cursor-pointer" value="XXL">XXL</button>
+                        </li>
                     </ul>
                 </div>
                 <div className="flex flex-col justify-center items-start w-full h-auto mt-10">
-                    <label className="flex flex-row justify-start items-center w-full h-auto text-lg">Quantity: </label>
+                    <span className="flex flex-row justify-start items-center w-full h-auto text-lg">Quantity: </span>
                     <div className="flex flex-row justify-start items-center w-auto h-auto mt-3 border rounded-2xl">
                         <button className="h-full w-1/3 flex flex-col justify-center items-center px-5 py-4 hover:bg-gray-200 rounded-2xl" onClick={handleRemoveQuantity}>-</button>
                         <label className="h-full w-1/3 flex flex-col justify-center items-center px-5 py-4">{quantity}</label>
