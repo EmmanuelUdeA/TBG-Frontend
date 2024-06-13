@@ -18,6 +18,7 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
     const router = useRouter();
     const user = useStore((state) => state.user);
     const updateUser = useStore(state => state.updateUser);
+    const cartProducts = useStore(state => state.cart);
     useEffect(() => {
         if (user) {
             router.push(`?uid=${user.uid}`);
@@ -71,7 +72,8 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart }) => {
                         className="relative z-10 h-10 rounded-full border bg-transparent outline-none w-56 cursor-tex pl-10 pr-3" />
                     <BiSearchAlt className="absolute inset-y-0 h-8 w-8 border-r border-transparent my-auto ml-2" />
                 </form>
-                <TfiShoppingCartFull className="flex flex-row h-5 w-5 md:h-8 md:w-8 mr-5 cursor-pointer" onClick={handleCart} />
+                <TfiShoppingCartFull className="flex flex-row h-5 w-5 md:h-8 md:w-8 cursor-pointer" onClick={handleCart} />
+                <h1 className="flex flex-row text-xl font-bold md:h-auto md:w-auto mr-5 cursor-pointer">{cartProducts ? cartProducts.length : 0}</h1>
                 {user ?
                     <FaUserAstronaut className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={handleLogout} />
                     :

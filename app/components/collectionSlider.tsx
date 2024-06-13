@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const CollectionSlider = ({ collSlider }) => {
+const CollectionSlider = ({ collSlider, name }) => {
     const [actualCollection, setActualCollection] = useState(0);
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -24,7 +24,7 @@ const CollectionSlider = ({ collSlider }) => {
                 onClick={handleCollections}
                 onKeyDown={(e) => { if (e.key === 'Enter') handleCollections(); }}
                 className="bg-cover bg-center w-full h-screen blur-load"
-                style={{ backgroundImage: `url('/Lumen/Slider/Slider${actualCollection + 1}-blur.jpg')` }}
+                style={{ backgroundImage: `url('/${name}/Slider/Slider${actualCollection + 1}-blur.jpg')` }}
                 aria-label="View collection"
             >
                 {collSlider.length > 0 && <img src={collSlider[actualCollection].pathname} alt="" loading="lazy" className="w-full h-full" />}

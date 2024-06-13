@@ -51,10 +51,10 @@ const Page = () => {
     }, [fetchCollections.isSuccess]);
     return (
         <div className="flex flex-col w-screen h-auto justify-center items-center">
-            {collection && <CollectionSlider collSlider={collection.tbl_collection_slider} />}
+            {collection && <CollectionSlider collSlider={collection.tbl_collection_slider} name={collection.name}/>}
             {collection && <CollectionDescription collName={collection.name} collDescription={collection.description} />}
             {collection && <CollectionProductList products={collection.tbl_product} />}
-            {collection && <CollectionGallery gallery={collection.tbl_gallery} />}
+            {collection && <CollectionGallery gallery={collection.tbl_gallery} name={collection.name} />}
         </div>
     )
 }
