@@ -3,12 +3,14 @@ import { VscClose } from "react-icons/vsc";
 import { useStore } from "@/store/useStore";
 import { GoTrash } from "react-icons/go";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const CartShop = ({ viewCart, setViewCart }) => {
     const cartProducts = useStore(state => state.cart);
     const removeCartProduct = useStore(state => state.removeFromCart);
     const addProductQuantity = useStore(state => state.addProductQuantity);
     const removeProductQuantity = useStore(state => state.removeProductQuantity);
+    const user = useStore((state) => state.user);
     const handleViewMenu = () => {
         setViewCart(!viewCart)
     }
@@ -23,6 +25,11 @@ const CartShop = ({ viewCart, setViewCart }) => {
         else return null;
     }
     const [subtotal, setSubtotal] = useState(cartProducts ? getSubtotal(cartProducts) : null);
+    const handleSubmit = () => {
+        if (!user && localStorage.getItem("user") === null) {
+            toast.error("You need to login to access this page");
+        }
+    }
     useEffect(() => {
         let subtotal = getSubtotal(cartProducts);
         setSubtotal(subtotal)
@@ -58,7 +65,7 @@ const CartShop = ({ viewCart, setViewCart }) => {
                 {cartProducts && <section className="w-full h-auto flex flex-row justify-start items-center text-black text-xl pt-5 shadow-[rgba(0,0,15,0.5)_0px_-8px_6px_-6px] mt-10">
                     <p className="flex flex-row h-full w-full pl-5 pr-10 justify-between items-center">Subtotal: <label>{subtotal} $</label></p>
                 </section>}
-                {cartProducts && <button className="w-3/4 h-auto bg-sky-600 text-white font-bold p-3 mt-5 mb-5 rounded-xl">Checkout</button>}
+                {cartProducts && <button className="w-3/4 h-auto bg-sky-600 text-white font-bold p-3 mt-5 mb-5 rounded-xl" onClick={handleSubmit}>Checkout</button>}
             </section>
 
         </div>

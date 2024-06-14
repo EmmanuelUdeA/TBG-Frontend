@@ -4,6 +4,7 @@ import { useStore } from "@/store/useStore";
 import { useEffect, useState } from "react";
 import { useFetchProducts } from "@/hooks/useProducts";
 import { useRouter } from 'next/navigation';
+import { toast } from "sonner";
 
 export default function Page() {
     const router = useRouter();
@@ -65,6 +66,8 @@ export default function Page() {
                 quantity
             };
             updateCart(productToCart);
+        } else if (size === "") {
+            toast.error("Please select a size");
         }
     }
     return (
