@@ -62,9 +62,9 @@ const Signup = () => {
     }, [fetchLandingImg.isSuccess])
     return (
         <div className="bg-[url('/Landing/Landing1-blur.jpg')] bg-cover bg-center w-screen h-screen blur-load flex justify-center items-center">
-            <section className="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/3 h-full flex flex-col justify-center items-center bg-white rounded-md z-10 my-10 absolute top-1/2 transform -translate-y-1/2  overflow-y: auto p-5">
+            <section className="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/3 h-full flex flex-col justify-center items-center bg-white rounded-md z-10 absolute top-1/3 transform -translate-y-1/3  overflow-y: auto p-5">
                 <div className="w-full h-auto flex flex-col justify-center items-center pb-8 ">
-                    <h1 className="w-full h-10 sm:h-12 flex flex-row justify-center items-end text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4">
+                    <h1 className="w-full font-bold h-10 sm:h-12 flex flex-row justify-center items-end text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4">
                         Signup
                     </h1>
                     <p className="w-full h-8 sm:h-10 flex flex-row justify-center items-center mb-3 sm:mb-4 text-center text-xs sm:text-sm md:text-base lg:text-lg">
