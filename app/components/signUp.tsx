@@ -71,7 +71,7 @@ const Signup = () => {
     }, [fetchLandingImg.isSuccess])
     return (
         <div className="bg-[url('/Landing/Landing1-blur.jpg')] bg-cover bg-center w-screen h-screen blur-load flex justify-center items-center">
-            <section className="w-1/3  h-auto max-h-full flex flex-col justify-center items-center bg-white rounded-md z-10 absolute mt-32 py-6">
+            <section className="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 h-auto max-h-full flex flex-col justify-center items-center bg-white rounded-md z-10 absolute mt-32 py-6">
                 <h1 className="w-full h-12 flex flex-row justify-center items-end text-4xl">
                     Signup
                 </h1>
