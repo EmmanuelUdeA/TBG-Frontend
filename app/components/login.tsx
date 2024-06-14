@@ -85,7 +85,7 @@ const Login = () => {
                 </form>
                 <p className="w-full h-auto flex flex-row justify-center items-center mb-5">
                     New client?
-                    <Link className="ml-4 text-sky-500" href="/signup">Create account</Link>
+                    <Link className="ml-4 text-sky-500" href="/signUp">Create account</Link>
                 </p>
                 <button onClick={() => loginWithGoogle.mutate()} className="flex flex-row justify-center items-center py-2 px-8 border border-gray-400 bg-white rounded-lg">
                     <FcGoogle className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center mr-2" />
