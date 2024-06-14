@@ -45,7 +45,16 @@ const Signup = () => {
                 toast.error(signup.data.error);
             }
         }
-    }, [signup.isSuccess]);
+        if (loginWithGoogle.isSuccess) {
+            if (loginWithGoogle.data.auth) {
+                updateUser(loginWithGoogle.data.user);
+                toast.success("Login was successful.");
+                redirect(`/`);
+            } else {
+                toast.error("Error while logging in.");
+            }
+        }
+    }, [signup.isSuccess, loginWithGoogle.isSuccess]);
     const updateLandingImg = useStore(state => state.updateLandingImg);
     const fetchLandingImg = useFetchLandingImg();
     let landingImg = useStore(state => state.landingImg);
