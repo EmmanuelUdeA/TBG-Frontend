@@ -31,6 +31,10 @@ const LoginBox = ({ viewLoginBox, setViewLoginBox }) => {
         handleViewLoginBox();
         router.push('/login');
     }
+    const handleSignUp = () => {
+        handleViewLoginBox();
+        router.push('/signUp')
+    }
     useEffect(() => {
         if(!showNav){
             setViewLoginBox(false);
@@ -64,7 +68,7 @@ const LoginBox = ({ viewLoginBox, setViewLoginBox }) => {
                     </div>
                     <VscClose className="cursor-pointer w-8 h-8" onClick={handleViewLoginBox} />
                 </section>
-                {user && <button className="flex w-60 flex-row justify-center items-center h-14 bg-black rounded-xl mt-6 text-white hover:bg-white hover:text-black hover:border hover:border-black">Profile</button>}
+                {user ? <button className="flex w-60 flex-row justify-center items-center h-14 bg-black rounded-xl mt-6 text-white hover:bg-white hover:text-black hover:border hover:border-black">Profile</button> : <button className="flex w-60 flex-row justify-center items-center h-14 bg-black rounded-xl mt-6 text-white hover:bg-white hover:text-black hover:border hover:border-black" onClick={handleSignUp}>SignUp</button>}
                 {user ? <button className="flex w-60 flex-row justify-center items-center h-14 bg-black rounded-xl mt-3 text-white hover:bg-white hover:text-black hover:border hover:border-black" onClick={handleLogout}>LogOut</button> : <button className="flex w-60 flex-row justify-center items-center h-14 bg-black rounded-xl mt-3 text-white hover:bg-white hover:text-black hover:border hover:border-black" onClick={handleLogin}>LogIn</button>}
             </div>
         </div>
