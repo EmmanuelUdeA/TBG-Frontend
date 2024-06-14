@@ -17,7 +17,7 @@ const Login = () => {
     const loginWithGoogle = useLoginWithGoogle();
     useEffect(() => {
         if (user) {
-            router.push('/'); 
+            router.push('/');
         } else if (localStorage.getItem("uid") !== null) {
             router.push(`?uid=${localStorage.getItem("uid")}`);
             let user = JSON.parse(localStorage.getItem("user"));
@@ -69,27 +69,27 @@ const Login = () => {
     }, [fetchLandingImg.isSuccess])
     return (
         <div className="bg-[url('/Landing/Landing1-blur.jpg')] bg-cover bg-center w-screen h-screen blur-load flex justify-center items-center">
-            <section className="w-1/3 h-4/6 flex flex-col justify-center items-center bg-white rounded-md z-10 absolute mt-20">
-                <h1 className="w-full h-12 flex flex-row justify-center items-end text-4xl">
+            <section className="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 h-auto flex flex-col justify-center items-center bg-white rounded-md z-10 mt-10 absolute top-1/2 transform -translate-y-1/2 p-5">
+                <h1 className="w-full h-10 sm:h-12 flex flex-row justify-center items-end text-2xl sm:text-3xl md:text-4xl mb-4">
                     Login
                 </h1>
-                <p className="w-full h-12 flex flex-row justify-center items-center mb-10">
+                <p className="w-full h-10 sm:h-12 flex flex-row justify-center items-center mb-4 sm:mb-6 text-center text-sm sm:text-base">
                     Login with email and password.
                 </p>
-                <form className="w-full h-auto flex flex-col justify-center items-center mb-10" action={handleSubmit}>
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="email">Email</label>
-                    <input className="w-3/4 h-16 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5" id="email" name="email" type="email" />
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="password">Password</label>
-                    <input className="w-3/4 h-16 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5" id="password" name="password" type="password" />
-                    <input className="text-xl w-60 h-10 flex flex-row justify-center items-center border-0 bg-black text-white rounded-md cursor-pointer hover:bg-white hover:text-black hover:border hover:border-black" type="submit" />
+                <form className="w-full h-auto flex flex-col justify-center items-center mb-6 sm:mb-10" onSubmit={handleSubmit}>
+                    <label className="w-full sm:w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="email">Email</label>
+                    <input className="w-full sm:w-3/4 h-10 sm:h-12 flex flex-row justify-center item-center border-solid border mb-4 sm:mb-6 rounded-md px-5" id="email" name="email" type="email" />
+                    <label className="w-full sm:w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="password">Password</label>
+                    <input className="w-full sm:w-3/4 h-10 sm:h-12 flex flex-row justify-center item-center border-solid border mb-4 sm:mb-6 rounded-md px-5" id="password" name="password" type="password" />
+                    <input className="text-lg sm:text-xl w-40 sm:w-60 h-10 flex flex-row justify-center items-center border-0 bg-black text-white rounded-md cursor-pointer hover:bg-white hover:text-black " type="submit" />
                 </form>
-                <p className="w-full h-auto flex flex-row justify-center items-center mb-5">
+                <p className="w-full h-auto flex flex-row justify-center items-center mb-4 sm:mb-5 text-center text-sm sm:text-base">
                     New client?
-                    <Link className="ml-4 text-sky-500" href="/signup">Create account</Link>
+                    <Link className="ml-2 sm:ml-4 text-sky-500" href="/signUp">Create account</Link>
                 </p>
-                <button onClick={() => loginWithGoogle.mutate()} className="flex flex-row justify-center items-center py-2 px-8 border border-gray-400 bg-white rounded-lg">
-                    <FcGoogle className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center mr-2" />
-                    <span>Continue with Google</span>
+                <button onClick={() => loginWithGoogle.mutate()} className="flex flex-row justify-center items-center py-2 px-4 sm:px-6 border border-gray-400 bg-white rounded-lg">
+                    <FcGoogle className="cursor-pointer flex flex-row h-5 w-5 md:h-6 md:w-6 justify-center items-center mr-2" />
+                    <span className="text-sm sm:text-base">Continue with Google</span>
                 </button>
             </section>
             {landingImg && <img src={landingImg.landing1} alt="" loading="lazy" className="w-full h-full block" />}

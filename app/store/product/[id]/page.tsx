@@ -4,6 +4,7 @@ import { useStore } from "@/store/useStore";
 import { useEffect, useState } from "react";
 import { useFetchProducts } from "@/hooks/useProducts";
 import { useRouter } from 'next/navigation';
+import { toast } from "sonner";
 
 export default function Page() {
     const router = useRouter();
@@ -65,14 +66,17 @@ export default function Page() {
                 quantity
             };
             updateCart(productToCart);
+        } else if (size === "") {
+            toast.error("Please select a size");
         }
+
     }
     return (
         <div className="flex flex-row w-screen h-screen justify-center items-center mt-40">
             <section className="flex flex-col w-1/2 h-full justify-center items-center">
-                {product && <div className="flex flex-col justify-center items-center w-5/6 h-5/6 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${product.back_image})` }}>
-                    <img className="h-full w-full hover:opacity-0" alt="product" src={product.front_image} />
-                </div>}
+                <div className="flex flex-col justify-center items-center w-5/6 h-5/6 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${product.back_image})` }}>
+                    {product && <img className="h-full w-full hover:opacity-0" alt="product" src={product.front_image} />}
+                </div>
             </section>
             <section className="flex flex-col w-1/2 h-full justify-start items-start pl-16 mt-40">
                 <h1 className="flex flex-row justify-start items-center w-full h-auto text-3xl font-extrabold">{product ? product.name : ""}</h1>

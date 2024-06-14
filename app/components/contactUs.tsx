@@ -47,43 +47,43 @@ const ContactUs: React.FC = () => {
     }, [fetchMailer.isSuccess]);
     return (
         <div className="h-auto w-screen flex flex-col justify-start text-center items-center mt-40 mb-16">
-                <h1 className="text-4xl font-bold mb-5 text-black w-full p-5">
-                    Contact Us
-                </h1>
-                <form className="flex flex-col justify-center items-center w-1/2 h-auto" onSubmit={handleSubmit}>
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="name">Name:</label>
-                    <input
-                        className="w-3/4 h-4/5 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-4 py-5 text-black"
-                        type="text"
-                        id="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="email">Email:</label>
-                    <input
-                        className="w-3/4 h-4/5 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5 py-5 text-black"
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="subject">Subject:</label>
-                    <input
-                        className="w-3/4 h-4/5 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5 py-5 text-black"
-                        type="text"
-                        id="subject"
-                        value={subject}
-                        onChange={(e) => setSubject(e.target.value)}
-                    ></input>
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="message">Message:</label>
-                    <textarea
-                        className="w-3/4 h-44 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5 py-5 text-black resize-none"
-                        id="message"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                    ></textarea>
-                    <input className="text-xl w-60 h-14 flex flex-row justify-center items-center border-0 bg-black text-white rounded-md cursor-pointer hover:bg-white hover:text-black hover:border hover:border-black" type="submit" />
-                </form>
+            <h1 className="text-4xl font-bold mb-5 text-black w-full p-5">
+                Contact Us
+            </h1>
+            <form className="flex flex-col justify-center items-center w-1/2 h-auto" onSubmit={handleSubmit}>
+                <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="name">Name:</label>
+                <input
+                    className="w-3/4 h-4/5 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-4 py-5 text-black"
+                    type="text"
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="email">Email:</label>
+                <input
+                    className="w-3/4 h-4/5 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5 py-5 text-black"
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="subject">Subject:</label>
+                <input
+                    className="w-3/4 h-4/5 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5 py-5 text-black"
+                    type="text"
+                    id="subject"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                ></input>
+                <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="message">Message:</label>
+                <textarea
+                    className="w-3/4 h-44 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5 py-5 text-black resize-none"
+                    id="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                ></textarea>
+                <input className="text-xl w-60 h-14 flex flex-row justify-center items-center border-0 bg-black text-white rounded-md cursor-pointer hover:bg-white hover:text-black hover:border hover:border-black" type="submit" />
+            </form>
         </div>
     );
 };

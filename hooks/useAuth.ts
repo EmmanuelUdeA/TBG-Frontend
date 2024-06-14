@@ -4,7 +4,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { LoginResponse } from "@/types/auth.type";
 
-let auth = null; 
+let auth = null;
 
 async function FirebaseConnect() {
     const serverProps = await fetch(`/api/server_props`).then((res) => res.json());
@@ -120,7 +120,7 @@ async function fetchLogoutWithGoogle() {
     });
 }
 
-export const useLogouWithGoogle = () => {
+export const useLogoutWithGoogle = () => {
     return useMutation({
         mutationFn: fetchLogoutWithGoogle,
     })

@@ -4,14 +4,14 @@ import Link from "next/link";
 import { useStore } from "@/store/useStore";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useLogout, useLogouWithGoogle } from "@/hooks/useAuth";
+import { useLogout, useLogoutWithGoogle } from "@/hooks/useAuth";
 import { toast } from "sonner";
 import useScrollDirection from "@/hooks/useScrollDirection";
 
 const LoginBox = ({ viewLoginBox, setViewLoginBox }) => {
     const showNav = useScrollDirection();
     const logout = useLogout();
-    const logoutWithGoogle = useLogouWithGoogle();
+    const logoutWithGoogle = useLogoutWithGoogle();
     const router = useRouter();
     const user = useStore((state) => state.user);
     const updateUser = useStore(state => state.updateUser);
@@ -32,7 +32,7 @@ const LoginBox = ({ viewLoginBox, setViewLoginBox }) => {
         router.push('/login');
     }
     useEffect(() => {
-        if(!showNav){
+        if (!showNav) {
             setViewLoginBox(false);
         }
     }, [showNav])

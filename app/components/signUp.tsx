@@ -27,7 +27,7 @@ const Signup = () => {
     }
     useEffect(() => {
         if (user) {
-            router.push('/'); 
+            router.push('/');
         } else if (localStorage.getItem("uid") !== null) {
             router.push(`?uid=${localStorage.getItem("uid")}`);
             let user = JSON.parse(localStorage.getItem("user"));
@@ -62,33 +62,37 @@ const Signup = () => {
     }, [fetchLandingImg.isSuccess])
     return (
         <div className="bg-[url('/Landing/Landing1-blur.jpg')] bg-cover bg-center w-screen h-screen blur-load flex justify-center items-center">
-            <section className="w-1/3  h-auto max-h-full flex flex-col justify-center items-center bg-white rounded-md z-10 absolute mt-32 py-6">
-                <h1 className="w-full h-12 flex flex-row justify-center items-end text-4xl">
-                    Signup
-                </h1>
-                <p className="w-full h-12 flex flex-row justify-center items-center mb-10">
-                    Register with email and password.
-                </p>
-                <form className="w-full h-auto flex flex-col justify-center items-center mb-10" action={handleSubmit}>
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="name">Name</label>
-                    <input className="w-3/4 h-16 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5" id="name" name="name" type="text" />
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="lastname">Lastname</label>
-                    <input className="w-3/4 h-16 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5" id="lastname" name="lastname" type="text" />
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="email">Email</label>
-                    <input className="w-3/4 h-16 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5" id="email" name="email" type="email" />
-                    <label className="w-3/4 h-2 flex flex-row justify-start items-center mb-2 text-sm" htmlFor="password">Password</label>
-                    <input className="w-3/4 h-16 flex flex-row justify-center item-center border-solid border mb-10 rounded-md px-5" id="password" name="password" type="password" />
-                    <input className="text-xl w-60 h-10 flex flex-row justify-center items-center border-0 bg-black text-white rounded-md cursor-pointer hover:bg-white hover:text-black hover:border hover:border-black" type="submit" />
-                </form>
-                <p className="w-full h-auto flex flex-row justify-center items-center mb-5">
-                    Already have an account?
-                    <Link className="ml-4 text-sky-500" href="/login">Login with email</Link>
-                </p>
-                <button onClick={() => loginWithGoogle.mutate()} className="flex flex-row justify-center items-center py-2 px-8 border border-gray-400 bg-white rounded-lg">
-                    <FcGoogle className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center mr-2" />
-                    <span>Continue with Google</span>
-                </button>
-            </section >
+            <section className="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/3 h-full flex flex-col justify-center items-center bg-white rounded-md z-10 my-10 absolute top-1/2 transform -translate-y-1/2  overflow-y: auto p-5">
+                <div className="w-full h-auto flex flex-col justify-center items-center pb-8 ">
+                    <h1 className="w-full h-10 sm:h-12 flex flex-row justify-center items-end text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4">
+                        Signup
+                    </h1>
+                    <p className="w-full h-8 sm:h-10 flex flex-row justify-center items-center mb-3 sm:mb-4 text-center text-xs sm:text-sm md:text-base lg:text-lg">
+                        Register with email and password.
+                    </p>
+                    <form className="w-full h-auto flex flex-col justify-center items-center mb-4 sm:mb-6" onSubmit={handleSubmit}>
+                        <label className="w-full sm:w-3/4 h-4 flex flex-row justify-start items-center mb-1 text-xs sm:text-sm md:text-base lg:text-lg" htmlFor="name">Name</label>
+                        <input className="w-full sm:w-3/4 h-8 sm:h-10 md:h-12 flex flex-row justify-center items-center border-solid border mb-3 sm:mb-4 rounded-md px-3 sm:px-4 md:px-5" id="name" name="name" type="text" />
+                        <label className="w-full sm:w-3/4 h-4 flex flex-row justify-start items-center mb-1 text-xs sm:text-sm md:text-base lg:text-lg" htmlFor="lastname">Lastname</label>
+                        <input className="w-full sm:w-3/4 h-8 sm:h-10 md:h-12 flex flex-row justify-center items-center border-solid border mb-3 sm:mb-4 rounded-md px-3 sm:px-4 md:px-5" id="lastname" name="lastname" type="text" />
+                        <label className="w-full sm:w-3/4 h-4 flex flex-row justify-start items-center mb-1 text-xs sm:text-sm md:text-base lg:text-lg" htmlFor="email">Email</label>
+                        <input className="w-full sm:w-3/4 h-8 sm:h-10 md:h-12 flex flex-row justify-center items-center border-solid border mb-3 sm:mb-4 rounded-md px-3 sm:px-4 md:px-5" id="email" name="email" type="email" />
+                        <label className="w-full sm:w-3/4 h-4 flex flex-row justify-start items-center mb-1 text-xs sm:text-sm md:text-base lg:text-lg" htmlFor="password">Password</label>
+                        <input className="w-full sm:w-3/4 h-8 sm:h-10 md:h-12 flex flex-row justify-center items-center border-solid border mb-3 sm:mb-4 rounded-md px-3 sm:px-4 md:px-5" id="password" name="password" type="password" />
+                        <input className="text-xs sm:text-sm md:text-base lg:text-base w-32 sm:w-40 md:w-48 lg:w-60 h-8 sm:h-10 md:h-12 flex flex-row justify-center items-center border-0 bg-black text-white rounded-md cursor-pointer hover:bg-white hover:text-black hover:border hover:border-black" type="submit" />
+                    </form>
+                    <p className="w-full h-auto flex flex-row justify-center items-center mb-3 sm:mb-4 text-center text-xs sm:text-sm md:text-base lg:text-base">
+                        Already have an account?
+                        <Link className="ml-1 sm:ml-2 md:ml-4 text-sky-500" href="/login">Login with email</Link>
+                    </p>
+                    <button onClick={() => loginWithGoogle.mutate()} className="flex flex-row justify-center items-center py-1 sm:py-2 px-3 sm:px-4 md:px-5 lg:px-5 border border-gray-400 bg-white rounded-lg">
+                        <FcGoogle className="cursor-pointer flex flex-row h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 lg:h-8 lg:w-8 justify-center items-center mr-2" />
+                        <span className="text-xs sm:text-sm md:text-base lg:text-base">Continue with Google</span>
+                    </button>
+                </div>
+            </section>
+
+
             {landingImg && <img src={landingImg.landing1} alt="" loading="lazy" className="w-full h-full block" />}
         </div >
     )

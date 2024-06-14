@@ -1,12 +1,10 @@
 "use client";
 import { TbMenu2 } from "react-icons/tb";
-import { BiSearchAlt } from "react-icons/bi";
 import { TfiShoppingCartFull } from "react-icons/tfi";
 import { RiContactsLine } from "react-icons/ri";
 import Link from "next/link";
 import { FaUserAstronaut } from "react-icons/fa";
 import useScrollDirection from "@/hooks/useScrollDirection";
-import { useLogout, useLogouWithGoogle } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/store/useStore";
 import { useEffect } from "react";
@@ -46,18 +44,17 @@ const Navbar = ({ setViewMenu, viewMenu, viewCart, setViewCart, viewLoginBox, se
                     className="flex flex-row h-5 w-5 md:h-7 md:w-7 cursor-pointer text-white " onClick={handleView} />
                 <span className="hidden md:flex flex-row h-full justify-center items-center text-base ml-3 font-bold">Menu</span>
             </section>
-            <section className="hidden md:flex flex-row justify-center items-center w-6/12">
+            <section className="flex flex-row justify-center items-center w-full pr-10 md:w-6/12">
                 <Link href={`/`} className="filter grayscale">
-                    <img src="/TBGLogo.webp" className="h-8 w-48" />
+                    {/* Imagen del logo para pantallas medianas y grandes */}
+                    <img src="/TBGLogo.webp" className="hidden md:block h-8 md:w-48 w-auto" alt="TBG Logo" />
+                    {/* Texto TBG para pantallas pequeñas */}
+                    <span className="block md:hidden text-xl font-bold">TBG</span>
                 </Link>
             </section>
-            <section className="flex flex-row justify-end items-center w-full md:w-3/12 pr-5">
-                <form className="relative w-auto mr-5 h-10">
-                    <input type="search"
-                        className="relative z-10 h-10 rounded-full border bg-transparent outline-none w-56 cursor-tex pl-10 pr-3" />
-                    <BiSearchAlt className="absolute inset-y-0 h-8 w-8 border-r border-transparent my-auto ml-2" />
-                </form>
-                <TfiShoppingCartFull className="flex flex-row h-5 w-5 md:h-8 md:w-8 cursor-pointer" onClick={handleCart} />
+
+            <section className="flex flex-row justify-end items-center w-auto md:w-3/12 pr-5">
+                <TfiShoppingCartFull className="flex flex-row md:h-8 md:w-8 cursor-pointer" onClick={handleCart} />
                 <h1 className="flex flex-row text-xl font-bold md:h-auto md:w-auto mr-5 cursor-pointer">{cartProducts ? cartProducts.length : 0}</h1>
                 {user ?
                     <FaUserAstronaut className="cursor-pointer flex flex-row h-5 w-5 md:h-8 md:w-8 justify-center items-center" onClick={handleLoginBox} />
